@@ -29,9 +29,10 @@ class Create extends Component
         return redirect('/contact')->with('message', 'Added Successfully');
     }
 
-    public function updated($propertyEmail) {
-        $this->validateOnly($propertyEmail, [
-            'email'         =>      ['required', 'email', 'unique:contacts']
+    public function updated($propertyData) {
+        $this->validateOnly($propertyData, [
+            'email'                 =>      ['required', 'email', 'unique:contacts'],
+            'contact_number'        =>      ['required', 'numeric', 'digits:11']
         ]);
     }
 

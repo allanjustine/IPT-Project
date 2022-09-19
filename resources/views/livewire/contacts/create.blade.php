@@ -12,7 +12,7 @@
                 @enderror
             </div>
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" wire:model.defer="contact_number">
+                <input type="text" class="form-control" wire:model.debounce.500ms="contact_number">
                 <label for="contact_number">Contact Number</label>
                 @error('contact_number')
                     <p class="text-danger">{{ $message }}</p>

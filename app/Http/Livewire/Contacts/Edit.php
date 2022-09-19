@@ -44,7 +44,12 @@ class Edit extends Component
     public function getContactProperty() {
         return Contact::find($this->contactId);
     }
-
+    public function updated($propertyData) {
+        $this->validateOnly($propertyData, [
+            'email'                 =>      ['required', 'email', 'unique:contacts'],
+            'contact_number'        =>      ['required', 'numeric', 'digits:11']
+        ]);
+    }
     public function render()
     {
         return view('livewire.contacts.edit');
