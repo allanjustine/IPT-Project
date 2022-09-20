@@ -1,7 +1,7 @@
 <div>
-    {{-- <div class="col-sm-4 mb-2 form-group" style="margin-left: 68%">
+    <div class="col-sm-4 mb-2 form-group" style="margin-left: 67%">
         <input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name">
-    </div> --}}
+    </div>
     <table id="myTable" class="table table-striped shadow border border-light table-hover">
         <thead style="background-color: rgba(127, 169, 199, 0.527)">
             <tr>
@@ -43,7 +43,7 @@
 </style>
 
 
-{{-- <script>
+<script>
     function myFunction() {
       var input, filter, table, tr, td, i, txtValue;
       input = document.getElementById("myInput");
@@ -62,4 +62,4 @@
         }
       }
     }
-    </script> --}}
+</script>

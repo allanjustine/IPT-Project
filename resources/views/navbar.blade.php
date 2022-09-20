@@ -3,10 +3,15 @@
     <h5 class="p-2">Contact App</h5>
     <ul class="navbar-nav">
         <li class="nav-item active">
-          <a style="border-right: 1px rgba(89, 89, 89, 0.356) solid;" class="nav-link text-dark" href="{{ '/dashboard' }}">Dashboard</a>
+          <a class="nav-link text-dark" href="{{ '/dashboard' }}">Dashboard</a>
         </li>
+        <span></span>
         <li class="nav-item">
           <a class="nav-link text-dark" href="{{ '/contact' }}">Contacts</a>
+        </li>
+        <span></span>
+        <li class="nav-item">
+            <a class="nav-link text-dark" href="{{ '/log' }}">Logs</a>
         </li>
       </ul>
     <div class="collapse navbar-collapse" id="navbarText">
@@ -16,6 +21,15 @@
 
 <style>
     .navbar-nav {
-        margin-left: 373px;
+        margin-left: 300px;
+    }
+    .navbar-nav a{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+    span {
+        border-right: 1px solid rgba(95, 95, 95, 0.429);
+        height: 20px;
+        margin-top: 10px;
     }
 </style>
