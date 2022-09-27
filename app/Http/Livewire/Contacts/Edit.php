@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Contacts;
 use App\Models\Contact;
 use Livewire\Component;
+use App\Events\UserLog;
 
 class Edit extends Component
 {
@@ -35,7 +36,17 @@ class Edit extends Component
             'sim_card'                  =>      $this->sim_card
         ]);
 
+        $log_entry = 'Updated an contact "' . $this->name . '" with the ID# of ' . $this->contact->id;
+        event(new UserLog($log_entry));
+
         return redirect('/contact')->with('message', 'Updated Successfully');
+    }
+
+    public function updated($propertyData) {
+        $this->validateOnly($propertyData, [
+            'email'                     =>      ['required', 'email', 'unique:contacts'],
+            'contact_number'            =>          ['required', 'numeric', 'digits:11']
+        ]);
     }
 
     public function back() {

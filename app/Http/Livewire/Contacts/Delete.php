@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Contacts;
 
 use Livewire\Component;
 use App\Models\Contact;
+use App\Events\UserLog;
 class Delete extends Component
 {
 
@@ -15,6 +16,9 @@ class Delete extends Component
 
     public function delete() {
         $this->contact->delete();
+
+        $log_entry = 'Deleted an contact "' . $this->contact->name . '" with the ID# of ' . $this->contact->id;
+        event(new UserLog($log_entry));
 
         return redirect('/contact')->with('message', 'Deleted Successfully');
     }

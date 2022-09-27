@@ -4,7 +4,7 @@ namespace App\Http\Livewire\Contacts;
 
 use Livewire\Component;
 use App\Models\Contact;
-
+use App\Events\UserLog;
 class Create extends Component
 {
     public $name, $email, $contact_number, $address, $sim_card;
@@ -18,7 +18,7 @@ class Create extends Component
             'sim_card'                  =>          ['required', 'string', 'max:255']
         ]);
 
-        Contact::create([
+        $contact = Contact::create([
             'name'                  =>      $this->name,
             'email'                 =>      $this->email,
             'contact_number'        =>      $this->contact_number,
@@ -26,12 +26,16 @@ class Create extends Component
             'sim_card'              =>      $this->sim_card
         ]);
 
+        $log_entry = 'Added an contact "' . $contact->name . '" with the ID# of ' . $contact->id;
+        event(new UserLog($log_entry));
+
         return redirect('/contact')->with('message', 'Added Successfully');
     }
 
-    public function updated($propertyEmail) {
-        $this->validateOnly($propertyEmail, [
-            'email'         =>      ['required', 'email', 'unique:contacts']
+    public function updated($propertyData) {
+        $this->validateOnly($propertyData, [
+            'email'                     =>      ['required', 'email', 'unique:contacts'],
+            'contact_number'            =>      ['required', 'numeric', 'digits:11']
         ]);
     }
 

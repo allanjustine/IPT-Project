@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\SiteController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,11 +33,13 @@ Route::get('logout', [AuthController::class, 'logout']);
 
 // grouping the middleware
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', function() {
         return view('/dashboard');
     });
     Route::get('/contact', [ContactController::class, 'index']);
     Route::get('/edit/{contact}', [ContactController::class, 'edit']);
     Route::get('/delete/{contact}', [ContactController::class, 'destroy']);
+    Route::get('/log', [SiteController::class, 'logs']);
+
 });
