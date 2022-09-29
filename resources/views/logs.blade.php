@@ -23,5 +23,10 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="form-group mb-2 d-grip gap-2 d-md-flex justify-content-end">
+            <a class="btn btn-info mx-2" href="{{ '/contact' }}">
+                back
+            </a>
+        </div>
     </div>
 @endsection

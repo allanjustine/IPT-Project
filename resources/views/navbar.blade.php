@@ -15,7 +15,7 @@
         </li>
       </ul>
     <div class="collapse navbar-collapse" id="navbarText">
-            <a href="{{ '/logout' }}" style="text-decoration: none; margin-right: 10px; color: black; margin-left: 85%"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>
+            <a href="{{ '/logout' }}" style="text-decoration: none; margin-right: 10px; color: black; margin-left: 80%"><i class="fa fa-sign-out"></i>&nbsp;Logout</a>
     </div>
 </nav>
 

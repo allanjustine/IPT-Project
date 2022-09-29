@@ -20,7 +20,7 @@ class Delete extends Component
         $log_entry = 'Deleted an contact "' . $this->contact->name . '" with the ID# of ' . $this->contact->id;
         event(new UserLog($log_entry));
 
-        return redirect('/contact')->with('message', 'Deleted Successfully');
+        return redirect('/contact')->with('message', $this->contact->name . ' Deleted Successfully');
     }
 
     public function back() {

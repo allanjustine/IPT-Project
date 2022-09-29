@@ -39,7 +39,7 @@ class Edit extends Component
         $log_entry = 'Updated an contact "' . $this->name . '" with the ID# of ' . $this->contact->id;
         event(new UserLog($log_entry));
 
-        return redirect('/contact')->with('message', 'Updated Successfully');
+        return redirect('/contact')->with('message', $this->name . ' Updated Successfully');
     }
 
     public function updated($propertyData) {
