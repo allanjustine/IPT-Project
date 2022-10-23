@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SiteController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,6 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/edit/{contact}', [ContactController::class, 'edit']);
     Route::get('/delete/{contact}', [ContactController::class, 'destroy']);
     Route::get('/log', [SiteController::class, 'logs']);
-
+    Route::get('/recent-post', [PostController::class, 'recentPosts']);
+    Route::get('/my-post', [PostController::class, 'myPosts']);
 });

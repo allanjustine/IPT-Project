@@ -1,8 +1,22 @@
 <div>
-    <div class="col-sm-4 mb-2 form-group" style="margin-left: 67%">
-        <input class="form-control" type="text" id="myInput" onkeyup="myFunction()" placeholder="Search" title="Type in a name">
-    </div>
-    <table id="myTable" class="table table-striped shadow border border-light table-hover">
+    <div class="container" style="height: 360px;">
+    <table class="table table-striped shadow border border-light table-hover">
+        <div class="row">
+            <div class="col">
+                <select class="form-select" wire:model.lazy="sim_card" style="width: 120px; margin-left: 440px">
+                    <option value="All">All</option>
+                    <option value="TNT">TNT</option>
+                    <option value="Sun">Sun</option>
+                    <option value="Globe">Globe</option>
+                    <option value="TM">TM</option>
+                    <option value="PLDT">PLDT</option>
+                    <option value="Smart">Smart</option>
+                </select>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Search" wire:model.lazy="search" style="width: 120px;">
+            </div>
+        </div>
         <thead style="background-color: rgba(127, 169, 199, 0.527)">
             <tr>
                 <th>ID No</th>
@@ -34,32 +48,13 @@
             @endforeach
         </tbody>
     </table>
+    </div>
+    <div style="margin-left: 10px;">
+        {{ $contacts->links() }}
+    </div>
 </div>
-
 <style>
     #ic {
         width: 40px;
     }
 </style>
-
-
-<script>
-    function myFunction() {
-        var input, filter, table, tr, td, i, txtValue;
-        input = document.getElementById("myInput");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("myTable");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++) {
-            td = tr[i].getElementsByTagName("td")[1];
-            if (td) {
-            txtValue = td.textContent || td.innerText;
-            if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                tr[i].style.display = "";
-            } else {
-                tr[i].style.display = "none";
-            }
-            }
-        }
-    }
-</script>

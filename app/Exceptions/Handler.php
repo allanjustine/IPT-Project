@@ -49,9 +49,9 @@ class Handler extends ExceptionHandler
         });
     }
     protected function unauthenticated($request, AuthenticationException $exception)
-{
-    return $request->expectsJson()
-                ? response()->json(['error' => $exception->getMessage()], 401)
-                : redirect()->guest(route('login'))->with('error', 'Please login first or register an account to continue');
-}
+    {
+        return $request->expectsJson()
+        ? response()->json(['error' => $exception->getMessage()], 401)
+        : redirect()->guest(route('login'))->with('error', 'Please login first or register an account to continue');
+    }
 }

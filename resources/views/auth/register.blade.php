@@ -4,15 +4,13 @@
 
 @section('title', 'Register')
 <body>
-    <div class="container col-md-4 offset-md-4 mt-5">
-        <div class="col-md-4 offset-md-4">
-            <img src="images/logo.png" alt="logo" class="img-fluid mb-3 rounded-circle mt-3 img-responsive center-block d-block mx-auto">
+    <div class="container col-sm-4 offset-sm-4">
+        <div class="col-sm-8 offset-sm-2">
+            <img src="images/login-logo.png" alt="logo" class="img-fluid mb-1 rounded-circle img-responsive center-block d-block mx-auto">
         </div>
         <div class="card shadow mb-5 border border-light rounded">
-            <div class="card-header" style="background-color: rgba(127, 169, 199, 0.527)">
-                <h3 class='text-center'>Register</h3>
-            </div>
-            <div class="card-body">
+            <div class="card-body" id="card-bodyy">
+                <h2 class='text-center mt-2 mb-4 text-white'>REGISTER</h2>
                 <form action="{{ '/register' }}" method="POST">
                     {{ csrf_field() }}
 
@@ -52,9 +50,22 @@
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
-                    <div class="d-flex">
+                    <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
+                        <select name="gender" id="">
+                            <option hidden="true">Gender</option>
+                            <option selected disabled>Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Bisexual">Bisexual</option>
+                            <option value="Transgender">Transgender</option>
+                        </select>
+                        @error('gender')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
+                    </div>
+                    <div class="d-flex mt-4">
                         <div class="flex-grow-1">
-                            <a href="{{ '/' }}">Already have an account</a>
+                            <a href="{{ '/' }}" class="text-white">Already have an account</a>
                         </div>
                         <button class="btn btn-primary px-5">Register</button>
                     </div>
@@ -69,10 +80,13 @@
     #basic-addon1 {
     width: 40px;
     text-align: center;
-    background-color: rgba(127, 169, 199, 0.527);
+
+}
+#card-bodyy {
+    background-image: linear-gradient(to right, rgb(99, 34, 228), rgb(19, 131, 65));
 }
 body{
-    background-image: url("images/cover.jpg");
+    background-image: url("images/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;

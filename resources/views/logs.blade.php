@@ -6,8 +6,8 @@
 
 @section('content')
     <div class="container">
-        <div class="d-grid gap-2 d-md-flex">
-            <h1>Activity Log</h1>
+        <div class="d-grid gap-2 d-md-flex mt-2">
+            <h1 style="font-family: Comic Sans MS">Activity Log</h1>
         </div>
         <table class="table table-bordered table-striped table-sm table-hover">
             <thead style="background-color: rgba(127, 169, 199, 0.527)">
@@ -17,7 +17,7 @@
             <tbody>
                 @foreach ($logs as $log)
                 <tr>
-                    <td>{{ $log->created_at }}</td>
+                    <td>{{ $log->created_at->format('l, d F Y g:i A') }}</td>
                     <td>{{ $log->log_entry }}</td>
                 </tr>
                 @endforeach

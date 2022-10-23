@@ -39,12 +39,12 @@ class Edit extends Component
         $log_entry = 'Updated an contact "' . $this->name . '" with the ID# of ' . $this->contact->id;
         event(new UserLog($log_entry));
 
-        return redirect('/contact')->with('message', $this->name . ' Updated Successfully');
+        return redirect('/contact')->with('message', $this->name . ' has been updated successfully');
     }
 
     public function updated($propertyData) {
         $this->validateOnly($propertyData, [
-            'email'                     =>      ['required', 'email', 'unique:contacts'],
+            'email'                     =>          ['required', 'email', 'unique:contacts'],
             'contact_number'            =>          ['required', 'numeric', 'digits:11']
         ]);
     }

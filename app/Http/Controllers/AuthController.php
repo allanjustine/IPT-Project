@@ -27,7 +27,6 @@ class AuthController extends Controller
         if(!$user || $user->email_verified_at == null) {
             return redirect('/')->with('error', 'Sorry your account is not yet verified or does not exist');
         }
-
         $login = auth()->attempt([
             'email'     =>  $request->email,
             'password'  =>  $request->password
@@ -49,6 +48,7 @@ class AuthController extends Controller
     public function register(Request $request) {
         $request->validate([
             'name'          =>          'required|string',
+            'gender'        =>          'required|string',
             'email'         =>          'required|email|unique:users',
             'password'      =>          'required|confirmed|string:|min:6'
         ]);
@@ -59,6 +59,7 @@ class AuthController extends Controller
         $user = User::create([
             'name'                  =>      $request->name,
             'email'                 =>      $request->email,
+            'gender'                =>      $request->gender,
             'password'              =>      bcrypt($request->password),
             'remember_token'        =>      $token
         ]);

@@ -4,22 +4,19 @@
 
 @section('title', 'Log in')
 <body>
-    <div class="container col-md-4 offset-md-4 mt-5">
+    <div class="container col-md-4 offset-md-4">
+        <div class="col-sm-8 offset-sm-2">
+            <img src="images/login-logo.png" alt="logo" title="TalkTikTak Logo" class="img-fluid mb-1 rounded-circle img-responsive center-block d-block mx-auto">
+        </div>
         @if (session('message'))
         <div class="alert alert-success">{{ session('message') }}</div>
         @endif
         @if (session('error'))
         <div class="alert alert-danger">{{ session('error') }}</div>
         @endif
-
-        <div class="col-md-4 offset-md-4">
-            <img src="images/logo.png" alt="logo" class="img-fluid mb-3 rounded-circle mt-3 img-responsive center-block d-block mx-auto">
-        </div>
         <div class="card shadow mb-5 rounded border border-light">
-            <div class="card-header" style="background-color: rgba(127, 169, 199, 0.527)">
-                <h3 class="text-center mt-2">LOG IN</h3>
-            </div>
-            <div class="card-body">
+            <div class="card-body" id="card-bodyy">
+                <h2 class="text-center mb-4 text-white">LOG IN</h2>
                 <form action="{{ '/' }}" method="POST">
                     {{ csrf_field() }}
 
@@ -44,7 +41,7 @@
                     </div>
                     <div class="d-flex">
                         <div class="flex-grow-1">
-                            <a href="{{ '/register' }}">Sign up for an account</a>
+                            <a href="{{ '/register' }}" class="text-white">Sign up for an account</a>
                         </div>
                         <button class="btn btn-primary px-5" type="submit">Login</button>
                     </div>
@@ -60,14 +57,16 @@
 #basic-addon1 {
     width: 40px;
     text-align: center;
-    background-color: rgba(127, 169, 199, 0.527);
 }
 body{
-    background-image: url("images/cover.jpg");
+    background-image: url("images/bg.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     height: 100%;
+}
+#card-bodyy {
+    background-image: linear-gradient(to right, rgb(99, 34, 228), rgb(19, 131, 65));
 }
 </style>
 
