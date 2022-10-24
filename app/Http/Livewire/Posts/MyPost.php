@@ -14,7 +14,7 @@ class MyPost extends Component
         ]);
 
         Post::create([
-            'user_id' => auth()->user()->id,
+            'user_id'                 =>      auth()->user()->id,
             'title'                   =>      $this->title,
             'content'                 =>      $this->content
         ]);

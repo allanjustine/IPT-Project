@@ -3,13 +3,48 @@
         <h2 class="mt-3" style="font-family: Comic Sans MS">Recent Posts</h2>
     </div>
     <div class="post-body">
-        <div class="col-md-6 mt-5 offset-3">
+        <div class="col-md-6 offset-3">
             @if (session('message'))
                 <div id="messagee" class="alert text-black text-center text-black">{{ session('message') }}</div>
             @endif
+            <select class="form-select mb-1" wire:model.lazy="title">
+                <option value="All">All</option>
+                <option value="Feeling Sick">Feeling Sick</option>
+                <option value="Feeling Sad">Feeling Sad</option>
+                <option value="Feeling Emotional">Feeling Emotional</option>
+                <option value="Feeling Broken">Feeling Broken</option>
+                <option value="Feeling Happy">Feeling Happy</option>
+                <option value="Feeling Cute">Feeling Cute</option>
+                <option value="Feeling Loved">Feeling Loved</option>
+                <option value="Feeling Thankful">Feeling Thankful</option>
+                <option value="Feeling Angry">Feeling Angry</option>
+                <option value="Feeling Crazy">Feeling Crazy</option>
+                <option value="Feeling Hopeful">Feeling Hopeful</option>
+                <option value="Feeling Proud">Feeling Proud</option>
+                <option value="Feeling Fresh">Feeling Fresh</option>
+                <option value="Feeling Blessed">Feeling Blessed</option>
+                <option value="Feeling Bad">Feeling Bad</option>
+                <option value="Feeling Rich">Feeling Rich</option>
+                <option value="Feeling Betrayed">Feeling Betrayed</option>
+                <option value="Feeling Sleepy">Feeling Sleepy</option>
+                <option value="Feeling Nervous">Feeling Nervous</option>
+                <option value="Feeling Uncomfortable">Feeling Uncomfortable</option>
+                <option value="Feeling Cold">Feeling Cold</option>
+                <option value="Feeling Lol">Feeling Lol</option>
+                <option value="Feeling In love">Feeling In love</option>
+                <option value="Feeling Incomplete">Feeling Incomplete</option>
+                <option value="Feeling Cool">Feeling Cool</option>
+                <option value="Feeling Wow">Feeling Wow</option>
+                <option value="Feeling Cry">Feeling Cry</option>
+                <option value="Feeling Explode">Feeling Explode</option>
+                <option value="Feeling Disguise">Feeling Disguise</option>
+            </select>
+            <div class="col p-3 shadow-sm rounded mb-5" id="write">
+                <input type="text" class="write-2 form-control" placeholder="Search" wire:model.lazy="search">
+            </div>
             @foreach ($recents as $recent)
-            <div class="card shadow-md mt-3" id="cardd" style="width: 560px">
-                <div class="card-header">
+            <div class="card shadow-md mt-3" style="width: 560px">
+                <div class="card-header" id="cardd">
                     <span class="float-end" id="titlee">
                         <span class="float-end" id="titleee">-{{ $recent->title }}</span>
                         <span class="
@@ -52,10 +87,10 @@
                     <span class="name">{{ $recent->user->name }}</span><br>
                     <span class="time">{{ $recent->created_at->format('g:i A') }}</span>
                 </div>
-                <div class="card-body">
+                <div class="card-body" id="cardd">
                     <div class="contentt"><span>{{ $recent->content }}</span></div>
                 </div>
-                <div class="card-footer">
+                <div class="card-footer" id="cardd">
                     <span id="lc"><i class="fa-light fa-thumbs-up"></i> Like</span>
                     <span id="lc"><i class="fa-light fa-message"></i> Comment</span>
                     <span class="float-end" id="genderr">&nbsp;{{ $recent->user->gender }}</span>
@@ -70,6 +105,11 @@
             @endforeach
         </div>
     </div>
+    @if($recents->isEmpty())
+        <div class="text-gray-500">
+            <h1 class="text-center">No one is posting yet.</h1>
+        </div>
+    @endif
     <button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
 </div>
 
@@ -131,6 +171,12 @@
         cursor: pointer;
         border-radius: 4px;
         padding: 5px;
+    }
+    #write {
+        background-color: rgba(116, 115, 115, 0.661);
+    }
+    .write-2 {
+        border-radius: 20px;
     }
     #myBtn:hover {
         background-color: rgb(8, 61, 3);

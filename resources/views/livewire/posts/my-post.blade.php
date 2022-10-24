@@ -191,6 +191,11 @@
             @endforeach
         </div>
     </div>
+    @if($posts->isEmpty())
+        <div class="text-gray-500">
+            <h1 class="text-center">No posts yet.</h1>
+        </div>
+    @endif
     <button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
 </div>
 

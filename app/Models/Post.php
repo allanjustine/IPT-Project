@@ -22,4 +22,14 @@ class Post extends Model
     public function isEditable(){
         return auth()->user()->role=='editor' || auth()->user()->id==$this->user_id;
     }
+    public function scopeSearch($query, $terms)
+    {
+        collect(explode(" ", $terms))
+            ->filter()
+            ->each(function ($term)use ($query) {
+                $term= '%' .$term . '%';
+                $query->where('title', 'like', $term)
+                ->orWhere('content', 'like', $term);
+        });
+    }
 }

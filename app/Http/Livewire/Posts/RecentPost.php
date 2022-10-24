@@ -2,15 +2,20 @@
 
 namespace App\Http\Livewire\Posts;
 use App\Models\Post;
+use App\Models\User;
 use Livewire\Component;
 
 class RecentPost extends Component
 {
-    public function recentPosts (){
-        $recents = Post::orderBy('created_at', 'desc')
-        ->limit(50)
-        ->get();
+    public $search, $title = 'All';
 
+    public function recentPosts (){
+        $query = Post::orderBy('content', 'desc')
+            ->search($this->search);
+            if($this->title != 'All') {
+                $query->where('title', $this->title);
+            }
+            $recents = $query->get();
         return compact('recents');
     }
     public function render()
