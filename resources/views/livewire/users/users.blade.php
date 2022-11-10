@@ -7,6 +7,11 @@
                 <span class="time">at {{ $user->created_at->format('l, d F Y g:i A') }} </span>
             </div>
             @endforeach
+            @if($users->isEmpty())
+            <div class="text-gray-500">
+                <h5 class="text-center mt-3">No users found.</h5>
+            </div>
+            @endif
         </div>
     </div>
 </div>

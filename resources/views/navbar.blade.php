@@ -20,6 +20,12 @@
             <li class="nav-item">
                 <a class="nav-link text-white {{ 'log' == request()->path() ? 'active' : '' }}" href="{{ '/log' }}">Logs</a>
             </li>
+            @role('admin')
+            <span class="nav-line"></span>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ 'admin' == request()->path() ? 'active' : '' }}" href="{{ '/admin' }}">Admin</a>
+            </li>
+            @endrole
         </ul>
         <ul class="navbar-nav ms-auto">
             <div class="dropdown dropstart">

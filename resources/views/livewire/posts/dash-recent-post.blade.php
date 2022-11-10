@@ -7,6 +7,11 @@
                 <span class="time">at {{ $recent->created_at->format('g:i A') }} </span>
             </div>
             @endforeach
+            @if($recents->isEmpty())
+            <div class="text-gray-500">
+                <h5 class="text-center mt-3">Recent post is empty</h5>
+            </div>
+            @endif
         </div>
     </div>
 </div>

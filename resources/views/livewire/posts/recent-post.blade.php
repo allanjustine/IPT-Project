@@ -123,6 +123,10 @@
     .name:hover {
         color: rgb(204, 202, 202);
     }
+    .form-select {
+        background-color: rgba(116, 115, 115, 0.661);
+        color: whitesmoke;
+    }
     #cardd {
         background-color: rgba(116, 115, 115, 0.661);
         color: whitesmoke;

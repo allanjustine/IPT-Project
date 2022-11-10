@@ -46,6 +46,12 @@
                     </td>
                 </tr>
             @endforeach
+            @if($contacts->count() == 0)
+                <td colspan="8" class="text-center">
+                    No contacts found
+                </td>
+            @endif
+
         </tbody>
     </table>
     </div>
