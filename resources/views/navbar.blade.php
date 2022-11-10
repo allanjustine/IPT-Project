@@ -12,6 +12,7 @@
             <li class="nav-item">
             <a class="nav-link text-white {{ 'recent-post' == request()->path() ? 'active' : '' }}" href="{{ '/recent-post' }}">Recent Posts</a>
             </li>
+            @role('admin')
             <span class="nav-line"></span>
             <li class="nav-item">
             <a class="nav-link text-white {{ 'contact' == request()->path() ? 'active' : '' }}" href="{{ '/contact' }}">Contacts</a>
@@ -20,10 +21,17 @@
             <li class="nav-item">
                 <a class="nav-link text-white {{ 'log' == request()->path() ? 'active' : '' }}" href="{{ '/log' }}">Logs</a>
             </li>
-            @role('admin')
             <span class="nav-line"></span>
             <li class="nav-item">
                 <a class="nav-link text-white {{ 'admin' == request()->path() ? 'active' : '' }}" href="{{ '/admin' }}">Admin</a>
+            </li>
+            <span class="nav-line"></span>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ 'roles' == request()->path() ? 'active' : '' }}" href="{{ route('admin.roles.index') }}">Roles</a>
+            </li>
+            <span class="nav-line"></span>
+            <li class="nav-item">
+                <a class="nav-link text-white {{ 'permissions' == request()->path() ? 'active' : '' }}" href="{{ route('admin.permissions.index') }}">Permissions</a>
             </li>
             @endrole
         </ul>

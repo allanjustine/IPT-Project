@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Posts;
 use App\Models\Post;
 use Livewire\Component;
+use App\Events\UserLog;
 
 class MyPost extends Component
 {
@@ -13,11 +14,13 @@ class MyPost extends Component
             'content'               =>      ['required', 'string', 'max:255'],
         ]);
 
-        Post::create([
+        $post = Post::create([
             'user_id'                 =>      auth()->user()->id,
             'title'                   =>      $this->title,
             'content'                 =>      $this->content
         ]);
+        $log_entry = $post->user->name . ' has a post' .  ' with a ' . $post->title;
+        event(new UserLog($log_entry));
 
         return redirect('/my-post')->with('message', 'Posted');
     }

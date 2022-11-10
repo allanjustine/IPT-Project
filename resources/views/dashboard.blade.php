@@ -5,11 +5,11 @@
 @section('title', 'Dashboard')
 
 @section('content')
-    <div class="container mt-2">
+    <div class="container">
         <h1 style="font-family: Comic Sans MS">Dashboard</h1>
         <div class="content">
             <div class="row mt-5 text-center">
-                <div class="col mb-2">
+                <div class="col-md-3 mb-2">
                     <div class="card shadow">
                         <a href="/recent-post" id="dash-link">
                             <div class="card-body rounded">
@@ -26,7 +26,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col mb-2">
+                @role('admin')
+                <div class="col-md-3 mb-2">
                     <div class="card shadow">
                         <a href="/contact" id="dash-link">
                             <div class="card-body rounded">
@@ -43,7 +44,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col mb-2">
+                <div class="col-md-3 mb-2">
                     <div class="card shadow">
                         <a href="/log" id="dash-link">
                             <div class="card-body rounded">
@@ -60,7 +61,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col">
+                @endrole
+                <div class="col-md-3">
                     <div class="card shadow">
                         <a href="/my-post" id="dash-link">
                             <div class="card-body rounded">
@@ -89,12 +91,14 @@
                         <livewire:posts.dash-recent-post/>
                     </div>
                 </div>
+                @role('admin')
                 <div class="col-sm-6 mt-3">
                     <h5 style="font-family: Comic Sans MS">User Accounts</h5>
                     <div class="recent-only">
                         <livewire:users.users/>
                     </div>
                 </div>
+                @endrole
             </div>
         </section>
     </div>

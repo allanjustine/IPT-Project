@@ -392,8 +392,4 @@
     }
     });
 
-    setTimeout(function() {
-        var msg = document.getElementById("messagee");
-        msg.parentNode.removeChild(msg);
-    }, 1500);
 </script>

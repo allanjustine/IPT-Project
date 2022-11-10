@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-4">
                 @if (session('message'))
-                    <div class="alert alert-success">{{ session('message') }}</div>
+                    <div id="messagee" class="alert alert-success">{{ session('message') }}</div>
                 @endif
                 <livewire:contacts.create/>
             </div>

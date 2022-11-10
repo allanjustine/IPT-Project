@@ -3,7 +3,9 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -39,13 +41,18 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', function() {
         return view('/dashboard');
     });
-    Route::get('/contact', [ContactController::class, 'index']);
-    Route::get('/edit/{contact}', [ContactController::class, 'edit']);
-    Route::get('/delete/{contact}', [ContactController::class, 'destroy']);
-    Route::get('/log', [SiteController::class, 'logs']);
     Route::get('/recent-post', [PostController::class, 'recentPosts']);
     Route::get('/my-post', [PostController::class, 'myPosts']);
 });
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
-    Route::get('/admin', [AdminController::class, 'index']);
+    Route::get('/log', [SiteController::class, 'logs']);
+    Route::get('/contact', [ContactController::class, 'index']);
+    Route::get('/edit/{contact}', [ContactController::class, 'edit']);
+    Route::get('/delete/{contact}', [ContactController::class, 'destroy']);
+
+});
+Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function() {
+    Route::get('/', [IndexController::class, 'index'])->name('index');
+    Route::resource('/roles', RoleController::class);
+    Route::resource('/permissions', PermissionController::class);
 });

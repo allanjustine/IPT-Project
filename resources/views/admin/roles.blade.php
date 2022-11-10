@@ -2,11 +2,11 @@
 
 @extends('navbar')
 
-@section('title', 'Admin')
+@section('title', 'Admin | Roles')
 
 @section('content')
     <div class="container">
-        <livewire:admin.index/>
+        <livewire:admin.roles.index/>
     </div>
 
 @endsection

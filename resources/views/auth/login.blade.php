@@ -9,10 +9,10 @@
             <img src="images/login-logo.png" alt="logo" title="TalkTikTak Logo" class="img-fluid mb-1 rounded-circle img-responsive center-block d-block mx-auto">
         </div>
         @if (session('message'))
-        <div class="alert alert-success">{{ session('message') }}</div>
+        <div id="messagee" class="alert alert-success">{{ session('message') }}</div>
         @endif
         @if (session('error'))
-        <div class="alert alert-danger">{{ session('error') }}</div>
+        <div id="messagee" class="alert alert-danger">{{ session('error') }}</div>
         @endif
         <div class="card shadow mb-5 rounded border border-light">
             <div class="card-body" id="card-bodyy">
