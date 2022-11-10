@@ -2,7 +2,7 @@
 
 @extends('navbar')
 
-@section('title', 'Contacts')
+@section('title', 'Admin')
 
 @section('content')
     <div class="container m-5">
