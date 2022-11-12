@@ -9,7 +9,7 @@ class RecentPost extends Component
     public $search, $title = 'All';
 
     public function recentPosts (){
-        $query = Post::orderBy('content')
+        $query = Post::orderBy('id', 'desc')
             ->search($this->search);
             if($this->title != 'All') {
                 $query->where('title', $this->title);

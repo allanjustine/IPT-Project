@@ -7,9 +7,12 @@ use App\Events\UserLog;
 
 class MyPost extends Component
 {
-    public $title, $content;
+    public $title, $content, $post_id;
+    public $updateMode = false;
 
     public $postDelete;
+
+    public $postEdit;
 
     public function addPost() {
         $this->validate([
@@ -21,7 +24,7 @@ class MyPost extends Component
             'title'                   =>      $this->title,
             'content'                 =>      $this->content
         ]);
-        $log_entry = $post->user->name . ' has a post' .  ' with a ' . $post->title;
+        $log_entry = $post->user->name . ' has a post ';
         event(new UserLog($log_entry));
 
         return redirect('/my-post')->with('message', 'Posted');
@@ -29,7 +32,7 @@ class MyPost extends Component
 
     public function loadPost() {
         $posts = Post::where ('user_id', auth()->user()->id)
-        ->orderBy('created_at', 'desc')
+        ->orderBy('id', 'desc')
         ->limit(50)
         ->get();
 
@@ -39,15 +42,16 @@ class MyPost extends Component
     public function deletePost($postId) {
         $this->postDelete = $postId;
 
-        $post = Post::findOrFail($this->postDelete);
+        $post = Post::find($this->postDelete);
 
         $post->delete();
 
-        $log_entry = $post->user->name . ' has deleted a post ' . $post->content;
+        $log_entry = $post->user->name . ' deleted a post ';
         event(new UserLog($log_entry));
 
         return redirect('/my-post')->with('message', 'Post has been deleted successfully');
     }
+
 
     public function render()
     {
