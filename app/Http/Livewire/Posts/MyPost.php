@@ -9,6 +9,8 @@ class MyPost extends Component
 {
     public $title, $content;
 
+    public $postDelete;
+
     public function addPost() {
         $this->validate([
             'content'               =>      ['required', 'string', 'max:255'],
@@ -32,6 +34,19 @@ class MyPost extends Component
         ->get();
 
         return compact('posts');
+    }
+
+    public function deletePost($postId) {
+        $this->postDelete = $postId;
+
+        $post = Post::findOrFail($this->postDelete);
+
+        $post->delete();
+
+        $log_entry = $post->user->name . ' has deleted a post ' . $post->content;
+        event(new UserLog($log_entry));
+
+        return redirect('/my-post')->with('message', 'Post has been deleted successfully');
     }
 
     public function render()

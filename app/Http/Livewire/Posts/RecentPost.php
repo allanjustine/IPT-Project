@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire\Posts;
 use App\Models\Post;
-use App\Models\User;
 use Livewire\Component;
 
 class RecentPost extends Component
@@ -10,7 +9,7 @@ class RecentPost extends Component
     public $search, $title = 'All';
 
     public function recentPosts (){
-        $query = Post::orderBy('content', 'desc')
+        $query = Post::orderBy('content')
             ->search($this->search);
             if($this->title != 'All') {
                 $query->where('title', $this->title);

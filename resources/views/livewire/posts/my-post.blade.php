@@ -1,9 +1,35 @@
+
+{{-- delete post --}}
+@foreach ($posts as $post)
+<div class="modal fade" id="click-delete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content" id="modall">
+        <div class="modal-header text-center">
+            <h5 class="modal-title title3 text-white" id="exampleModalLabel">Are you sure you want to delete this post?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+        <div class="modal-body">
+            <p class="text-center text-white">this deletion will not be undone</p>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary form-control" wire:click.prevent="deletePost({{ $post->id }})">Delete Post</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+@endforeach
+
+
 {{-- Modal post Features --}}
 <div class="modal fade" id="click" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content" id="modall">
         <div class="modal-header text-center">
-            <h5 class="modal-title text-white" id="exampleModalLabel">Create post</h5>
+            <h5 class="modal-title title1 text-white" id="exampleModalLabel">Create post</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -56,7 +82,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content" id="modall">
         <div class="modal-header text-center">
-            <h5 class="modal-title text-white" id="exampleModalLabel">Edit your post</h5>
+            <h5 class="modal-title title2 text-white" id="exampleModalLabel modal-title">Edit your post</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
@@ -126,7 +152,7 @@
                     <span id="dot-icon" class="float-end dropdown dropstart">
                         <span class="fa-solid fa-ellipsis-vertical text-black" type="button" data-bs-toggle="dropdown" aria-expanded="false"></span>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" wire:click="deletePost()">Delete</a></li>
+                            <li><a class="dropdown-item" data-toggle="modal" data-target="#click-delete">Delete</a></li>
                             <li><a class="dropdown-item" data-toggle="modal" data-target="#click-edit" wire:click="editPost({{ $post->id }})">Edit</a></li>
                           </ul>
                     </span>
@@ -228,8 +254,14 @@
         background-color: rgb(52, 52, 52);
         margin-top: 20%;
     }
-    .modal-title {
+    .title1 {
         margin-left: 38%;
+    }
+    .title2 {
+        margin-left: 35%;
+    }
+    .title3 {
+        margin-left: 8%;
     }
     .close {
         border-radius: 50%;

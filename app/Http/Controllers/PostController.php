@@ -82,6 +82,6 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return view('posts.my-post', compact('id'));
     }
 }

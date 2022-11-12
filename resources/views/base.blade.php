@@ -17,6 +17,7 @@
 <body style="background-color: rgba(10, 4, 47, 0.153); height: 115vh; overflow:auto">
     @yield('content')
 
+    @livewire('livewire-ui-modal')
     @livewireScripts
 </body>
 </html>
