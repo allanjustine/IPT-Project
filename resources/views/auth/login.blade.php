@@ -23,7 +23,7 @@
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
-                        <input type="email" name="email" id="email" placeholder="Email" class="form-control">
+                        <input type="email" name="email" id="email" placeholder="Email" class="form-control" required="">
                         </div>
                         @error('email')
                             <p class="text-danger">{{ $message }}</p>
@@ -32,7 +32,7 @@
                     <div class="form-group mb-5 mt-1 col-sm-10 offset-sm-1">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
-                        <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                        <input type="password" name="password" id="password" placeholder="Password" class="form-control" required="">
                         <span class="input-group-text" id="basic-addon1" type="show" style="width: 40px; cursor: pointer;" onclick="myFunction()"><i class="fa fa-eye"></i></span>
                         </div>
                         @error('password')

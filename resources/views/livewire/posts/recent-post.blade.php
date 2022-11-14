@@ -1,4 +1,5 @@
 <div class="container">
+    @include('livewire.modals.modal')
     <div class="profile">
         <h2 class="mt-3" style="font-family: Comic Sans MS">Recent Posts</h2>
     </div>

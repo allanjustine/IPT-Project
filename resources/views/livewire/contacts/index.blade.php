@@ -48,7 +48,7 @@
             @endforeach
             @if($contacts->count() == 0)
                 <td colspan="8" class="text-center">
-                    No contacts found
+                    No contacts found in this table.
                 </td>
             @endif
 

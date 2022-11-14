@@ -7,6 +7,7 @@ use Livewire\Component;
 class RecentPost extends Component
 {
     public $search, $title = 'All';
+    public $content, $post_id;
 
     public function recentPosts (){
         $query = Post::orderBy('id', 'desc')
@@ -17,6 +18,7 @@ class RecentPost extends Component
             $recents = $query->get();
         return compact('recents');
     }
+
     public function render()
     {
         return view('livewire.posts.recent-post', $this->recentPosts());

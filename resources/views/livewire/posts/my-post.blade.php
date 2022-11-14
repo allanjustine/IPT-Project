@@ -22,8 +22,8 @@
                         <span id="dot-icon" class="float-end dropdown dropstart">
                             <span class="fa-solid fa-ellipsis-vertical text-black" type="button" data-bs-toggle="dropdown" aria-expanded="false"></span>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" data-toggle="modal" data-target="#click-delete">Delete</a></li>
-                                <li><a class="dropdown-item" data-toggle="modal" data-target="#click-edit">Edit</a></li>
+                                <li><a class="dropdown-item" data-toggle="modal" data-target="#click-delete" wire:click="delete({{ $post->id }})">Delete</a></li>
+                                <li><a class="dropdown-item" data-toggle="modal" data-target="#click-edit" wire:click="editPosts({{ $post->id }})">Edit</a></li>
                             </ul>
                         </span>
                         @endif

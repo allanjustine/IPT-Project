@@ -17,7 +17,7 @@
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-user"></i></span>
-                            <input type="name" name="name" id="name" placeholder="Name" class="form-control">
+                            <input type="name" name="name" id="name" placeholder="Name" class="form-control" required="">
                         </div>
                             @error('name')
                             <p class="text-danger">{{ $message }}</p>
@@ -26,7 +26,7 @@
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-envelope"></i></span>
-                            <input type="email" name="email" id="email" placeholder="Email" class="form-control">
+                            <input type="email" name="email" id="email" placeholder="Email" class="form-control" required="">
                         </div>
                             @error('email')
                             <p class="text-danger">{{ $message }}</p>
@@ -35,7 +35,8 @@
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
-                            <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+                            <input type="password" name="password" id="password" placeholder="Password" class="form-control" required="">
+                            <span class="input-group-text" id="basic-addon1" type="show" style="width: 40px; cursor: pointer;" onclick="myFunction()"><i class="fa fa-eye"></i></span>
                         </div>
                         @error('password')
                             <p class="text-danger">{{ $message }}</p>
@@ -44,7 +45,8 @@
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
-                            <input type="password" name="password_confirmation" placeholder="Confirm Password" id="password_confirmation" class="form-control">
+                            <input type="password" name="password_confirmation" placeholder="Confirm Password" id="password_confirmation" class="form-control" required="">
+                            <span class="input-group-text" id="basic-addon1" type="show" style="width: 40px; cursor: pointer;" onclick="myFunctionConfirm()"><i class="fa fa-eye"></i></span>
                         </div>
                         @error('password_confirmation')
                             <p class="text-danger">{{ $message }}</p>
@@ -93,3 +95,21 @@ body{
     height: 100%;
 }
 </style>
+<script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+    function myFunctionConfirm() {
+        var x = document.getElementById("password_confirmation");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+</script>

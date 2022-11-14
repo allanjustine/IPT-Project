@@ -7,6 +7,9 @@ use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\ContactController;
+use App\Models\Contact;
+use App\Models\Log;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,7 +42,11 @@ Route::get('logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', function() {
-        return view('/dashboard');
+        $allPosts = Post::count();
+        $visitors = Contact::count();
+        $logs = Log::count();
+
+        return view('/dashboard', compact('allPosts', 'visitors', 'logs'));
     });
     Route::get('/recent-post', [PostController::class, 'recentPosts']);
     Route::get('/my-post', [PostController::class, 'myPosts']);

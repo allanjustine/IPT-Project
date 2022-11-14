@@ -8,8 +8,12 @@ class Users extends Component
 {
     public function show()
     {
-        $users = User::orderBy('created_at', 'desc')->get();
-            return compact('users');
+        $users = User::whereNOTNULL('email_verified_at')->get();
+        $usersNull = User::whereNULL('email_verified_at')->get();
+        $usersVerifiedCount = User::whereNOTNULL('email_verified_at')->count();
+        $allUsers = User::count();
+        $usersNotVerifiedCount = User::whereNULL('email_verified_at')->count();
+            return compact('users', 'usersVerifiedCount', 'usersNotVerifiedCount', 'allUsers', 'usersNull');
     }
     public function render()
     {

@@ -8,11 +8,6 @@ use App\Events\UserLog;
 class MyPost extends Component
 {
     public $title, $content, $post_id;
-    public $updateMode = false;
-
-    public $postDelete;
-
-    public $postEdit;
 
     public function addPost() {
         $this->validate([
@@ -24,7 +19,7 @@ class MyPost extends Component
             'title'                   =>      $this->title,
             'content'                 =>      $this->content
         ]);
-        $log_entry = $post->user->name . ' has a post ';
+        $log_entry = $post->user->name . ' Added a post ';
         event(new UserLog($log_entry));
 
         return redirect('/my-post')->with('message', 'Posted');
@@ -38,16 +33,36 @@ class MyPost extends Component
 
         return compact('posts');
     }
+    public function editPosts(int $post_id) {
+        $post = Post::find($post_id);
+        if($post){
+            $this->post_id = $post->id;
+            $this->title = $post->title;
+            $this->content = $post->content;
+        }else{
+            return redirect()->to('my-post');
+        }
+    }
+    public function updatePosts() {
+        $this->validate([
+            'content'                      =>          ['required', 'string', 'max:255'],
+        ]);
 
-    public function deletePost($postId) {
+        $post = Post::where('id', $this->post_id)->update([
+            'user_id'                 =>      auth()->user()->id,
+            'title'                      =>      $this->title,
+            'content'                     =>      $this->content,
+        ]);
+
+        return redirect('my-post')->with('message', ' Post updated successfully');
+    }
+
+    public function delete($postId) {
         $this->postDelete = $postId;
+    }
+    public function deletePost() {
 
-        $post = Post::find($this->postDelete);
-
-        $post->delete();
-
-        $log_entry = $post->user->name . ' deleted a post ';
-        event(new UserLog($log_entry));
+        Post::find($this->postDelete)->delete();
 
         return redirect('/my-post')->with('message', 'Post has been deleted successfully');
     }

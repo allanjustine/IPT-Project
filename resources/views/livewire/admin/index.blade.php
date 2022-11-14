@@ -13,7 +13,7 @@
                                     </div>
                                     <div class="col mt-4">
                                         <span class="text-white float-right" id="text">Recent Post</span><br>
-                                        <span class="text-white" id="text2">1,300</span>
+                                        <span class="text-white" id="text2">{{ $allPosts }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                                     </div>
                                     <div class="col mt-4">
                                         <span class="text-white float-right" id="text">Total Visitors</span><br>
-                                        <span class="text-white" id="text2">2,100</span>
+                                        <span class="text-white" id="text2">{{ $visitors }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -47,14 +47,14 @@
                                     </div>
                                     <div class="col mt-4">
                                         <span class="text-white float-right" id="text">Total Logs</span><br>
-                                        <span class="text-white" id="text2">500</span>
+                                        <span class="text-white" id="text2">{{ $logs }}</span>
                                     </div>
                                 </div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="col">
+                <div class="col mb-2">
                     <div class="card shadow">
                         <a href="/my-post" id="dash-link">
                             <div class="card-body rounded">
@@ -64,7 +64,41 @@
                                     </div>
                                     <div class="col mt-4">
                                         <span class="text-white float-right" id="text">Your Posts</span><br>
-                                        <span class="text-white" id="text2">1,000</span>
+                                        <span class="text-white" id="text2">{{ $posts }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col offset-sm-2 mb-2">
+                    <div class="card shadow">
+                        <a href="/admin/roles" id="dash-link">
+                            <div class="card-body rounded">
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="fa fa-users-gear text-white mt-2" id="dash-icon"></i>
+                                    </div>
+                                    <div class="col mt-4">
+                                        <span class="text-white float-right" id="text">Total Roles</span><br>
+                                        <span class="text-white" id="text2">{{ $roles }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card shadow">
+                        <a href="/admin/permissions" id="dash-link">
+                            <div class="card-body rounded">
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="fa fa-user-lock text-white mt-2" id="dash-icon"></i>
+                                    </div>
+                                    <div class="col mt-2">
+                                        <span class="text-white float-right" id="text">Total Permissions</span><br>
+                                        <span class="text-white" id="text2">{{ $permissions }}</span>
                                     </div>
                                 </div>
                             </div>
