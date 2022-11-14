@@ -48,11 +48,13 @@ class MyPost extends Component
             'content'                      =>          ['required', 'string', 'max:255'],
         ]);
 
-        $post = Post::where('id', $this->post_id)->update([
+        Post::where('id', $this->post_id)->update([
             'user_id'                 =>      auth()->user()->id,
             'title'                      =>      $this->title,
             'content'                     =>      $this->content,
         ]);
+        $log_entry =  ' Post updated ';
+        event(new UserLog($log_entry));
 
         return redirect('my-post')->with('message', ' Post updated successfully');
     }
@@ -63,6 +65,9 @@ class MyPost extends Component
     public function deletePost() {
 
         Post::find($this->postDelete)->delete();
+
+        $log_entry =  ' Post deleted ';
+        event(new UserLog($log_entry));
 
         return redirect('/my-post')->with('message', 'Post has been deleted successfully');
     }

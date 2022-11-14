@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Permissions;
 
+use App\Events\UserLog;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\Permission\Models\Permission;
@@ -19,9 +20,12 @@ class Index extends Component
         $this->validate([
             'name'                      =>          ['required', 'string', 'max:255', 'unique:permissions'],
         ]);
-        $roles = Permission::create([
+        $permissions = Permission::create([
             'name'                  =>      $this->name,
         ]);
+
+        $log_entry = $permissions->name . ' has been added';
+        event(new UserLog($log_entry));
         return redirect('admin/permissions')->with('message', ' New permissions added');
     }
 
@@ -40,9 +44,12 @@ class Index extends Component
             'name'                      =>          ['required', 'string', 'max:255', 'unique:permissions'],
         ]);
 
-        $post = Permission::where('id', $this->permissionId)->update([
+        Permission::where('id', $this->permissionId)->update([
             'name'             =>      $this->name,
         ]);
+
+        $log_entry =  ' Permissions updated ';
+        event(new UserLog($log_entry));
 
         return redirect('admin/permissions')->with('message', ' Permissions updated successfully');
     }
@@ -54,6 +61,9 @@ class Index extends Component
     public function deletePermissions() {
 
         Permission::find($this->permissionDelete)->delete();
+
+        $log_entry = ' Permissions deleted ';
+        event(new UserLog($log_entry));
 
         return redirect('admin/permissions')->with('message', 'Permissions has been deleted successfully');
     }

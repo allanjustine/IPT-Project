@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Admin\Roles;
 
+use App\Events\UserLog;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\Permission\Models\Role;
@@ -22,6 +23,9 @@ class Index extends Component
         $roles = Role::create([
             'name'                  =>      $this->name,
         ]);
+
+        $log_entry = $roles->name . ' has been added';
+        event(new UserLog($log_entry));
         return redirect('admin/roles')->with('message', ' New role added');
     }
 
@@ -39,9 +43,12 @@ class Index extends Component
             'name'                      =>          ['required', 'string', 'max:255', 'unique:roles'],
         ]);
 
-        $post = Role::where('id', $this->roleId)->update([
+        Role::where('id', $this->roleId)->update([
             'name'             =>      $this->name,
         ]);
+
+        $log_entry =  ' Roles updated ';
+        event(new UserLog($log_entry));
 
         return redirect('admin/roles')->with('message', ' Roles updated successfully');
     }
@@ -53,6 +60,9 @@ class Index extends Component
     public function deleteRoles() {
 
         Role::find($this->roleDelete)->delete();
+
+        $log_entry =  ' Roles deleted ';
+        event(new UserLog($log_entry));
 
         return redirect('admin/roles')->with('message', 'Roles has been deleted successfully');
     }
