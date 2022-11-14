@@ -44,9 +44,10 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', function() {
         $allPosts = Post::count();
         $visitors = Contact::count();
+        $posts = Post::where('user_id', auth()->user()->id)->count();
         $logs = Log::count();
 
-        return view('/dashboard', compact('allPosts', 'visitors', 'logs'));
+        return view('/dashboard', compact('allPosts', 'visitors', 'logs', 'posts'));
     });
     Route::get('/recent-post', [PostController::class, 'recentPosts']);
     Route::get('/my-post', [PostController::class, 'myPosts']);

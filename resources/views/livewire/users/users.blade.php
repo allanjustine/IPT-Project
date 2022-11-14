@@ -1,9 +1,13 @@
 <div class="container">
     <div class="post-body">
         <div class="offset-1" style="height: 48vh; overflow:auto; overflow-x: hidden;">
+            @role('admin')
             <span>Total users: <span class="all-count px-2">{{ $allUsers }}</span></span>
+            @endrole
             <span>Active users: <span class="active-count px-2">{{ $usersVerifiedCount }}</span></span>
+            @role('admin')
             <span>Unverified users: <span class="unverified-count px-2">{{ $usersNotVerifiedCount }}</span></span>
+            @endrole
             @foreach ($users as $user)
             <div class="row">
                 <span class="name mt-3"> {{ $user->name }} <span class="time">account was created</span></span>
@@ -15,12 +19,14 @@
                 <h5 class="text-center mt-3">No users found.</h5>
             </div>
             @endif
+            @role('admin')
             <div class="row">
             @foreach ($usersNull as $null)
                 <span class="name mt-3"> {{ $null->name }} <span class="time">account was created</span></span>
                 <span class="time" id="not-active">at {{ $null->created_at->format('l, d F Y g:i A') }} </span>
             @endforeach
             </div>
+            @endrole
         </div>
     </div>
 </div>

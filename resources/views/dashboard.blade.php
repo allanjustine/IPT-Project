@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="col mt-4">
                                         <span class="text-white float-right" id="text">Your Posts</span><br>
-                                        <span class="text-white" id="text2">1,000</span>
+                                        <span class="text-white" id="text2">{{ $posts }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -91,14 +91,12 @@
                         <livewire:posts.dash-recent-post/>
                     </div>
                 </div>
-                @role('admin')
                 <div class="col-sm-6 mt-3">
                     <h5 style="font-family: Comic Sans MS">User Accounts</h5>
                     <div class="recent-only">
                         <livewire:users.users/>
                     </div>
                 </div>
-                @endrole
             </div>
         </section>
     </div>
