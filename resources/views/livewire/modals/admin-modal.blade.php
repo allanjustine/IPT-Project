@@ -1,5 +1,5 @@
 <div>
-    {{-- modal for roles --}}
+    {{-- add modal for roles --}}
     <div wire:ignore.self class="modal fade" id="modal-roles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -28,6 +28,8 @@
             </div>
         </div>
     </div>
+    {{-- end add modal for roles --}}
+
     {{-- modal update for roles --}}
     <div wire:ignore.self class="modal fade" id="update-modal-roles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -57,6 +59,8 @@
             </div>
         </div>
     </div>
+    {{-- end modal update for roles --}}
+
     {{-- delete roles modal --}}
     <div wire:ignore.self class="modal fade" id="delete-modal-roles" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -77,6 +81,8 @@
             </div>
         </div>
     </div>
+    {{-- end delete roles modal --}}
+
     {{-- modal for permissions --}}
     <div wire:ignore.self class="modal fade" id="modal-permissions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -106,6 +112,8 @@
             </div>
         </div>
     </div>
+    {{-- end modal for permissions --}}
+
     {{-- modal update for permissions --}}
     <div wire:ignore.self class="modal fade" id="update-modal-permissions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -135,6 +143,8 @@
             </div>
         </div>
     </div>
+    {{-- end modal update for permissions --}}
+
     {{-- delete permissions modal --}}
     <div wire:ignore.self class="modal fade" id="delete-modal-permissions" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -155,6 +165,8 @@
             </div>
         </div>
     </div>
+    {{--end delete permissions modal --}}
+
     {{-- modal update for users --}}
     <div wire:ignore.self class="modal fade" id="update-modal-users" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -200,6 +212,8 @@
             </div>
         </div>
     </div>
+    {{--end modal update for users --}}
+
     {{-- delete users modal --}}
     <div wire:ignore.self class="modal fade" id="delete-modal-users" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -220,4 +234,5 @@
             </div>
         </div>
     </div>
+    {{-- end delete users modal --}}
 </div>
