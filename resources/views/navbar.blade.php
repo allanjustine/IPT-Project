@@ -22,17 +22,28 @@
                 <a class="nav-link text-white {{ 'log' == request()->path() ? 'active' : '' }}" href="{{ '/log' }}">Logs</a>
             </li>
             <span class="nav-line"></span>
-            <li class="nav-item">
-                <a class="nav-link text-white {{ 'admin' == request()->path() ? 'active' : '' }}" href="{{ '/admin' }}">Admin</a>
-            </li>
-            <span class="nav-line"></span>
-            <li class="nav-item">
-                <a class="nav-link text-white {{ 'roles' == request()->path() ? 'active' : '' }}" href="{{ route('admin.roles.index') }}">Roles</a>
-            </li>
-            <span class="nav-line"></span>
-            <li class="nav-item">
-                <a class="nav-link text-white {{ 'permissions' == request()->path() ? 'active' : '' }}" href="{{ route('admin.permissions.index') }}">Permissions</a>
-            </li>
+
+            <div class="dropdown">
+                <a class="btn dropdown-toggle" id="buttt" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select3">
+                    <li class="nav-item">
+                        <a style="margin-left: 20px" class="nav-link text-white {{ 'admin' == request()->path() ? 'active' : '' }}" href="{{ '/admin' }}">Admin</a>
+                    </li>
+                    <span class="nav-line"></span>
+                    <li class="nav-item">
+                        <a style="margin-left: 20px" class="nav-link text-white {{ 'admin/roles' == request()->path() ? 'active' : '' }}" href="{{ route('admin.roles.index') }}">Roles</a>
+                    </li>
+                    <span class="nav-line"></span>
+                    <li class="nav-item">
+                        <a style="margin-left: 20px" class="nav-link text-white {{ 'admin/permissions' == request()->path() ? 'active' : '' }}" href="{{ route('admin.permissions.index') }}">Permissions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a style="margin-left: 20px" class="nav-link text-white {{ 'admin/users' == request()->path() ? 'active' : '' }}" href="{{ route('admin.users.index') }}">Users</a>
+                    </li>
+                </div>
+            </div>
             @endrole
         </ul>
         <ul class="navbar-nav ms-auto">
@@ -68,6 +79,14 @@
     #profile-image {
         margin-left: 15px;
     }
+    #buttt {
+        border: none;
+        background-color: rgba(17, 162, 172, 0.37);
+        color: rgb(255, 255, 255);
+    }
+    #buttt:hover {
+        background-color: rgb(17, 162, 172);
+    }
     #profile-name a {
         text-decoration: none;
         color: rgb(225, 222, 222);
@@ -100,6 +119,9 @@
     #select2 {
         background-color: rgb(19, 131, 65);
         width: 300px;
+    }
+    #select3 {
+        background-color: rgb(19, 131, 65);
     }
     #select2 li:hover {
         background-color: rgb(17, 162, 172);

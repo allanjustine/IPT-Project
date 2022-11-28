@@ -20,7 +20,7 @@
                             <input type="name" name="name" id="name" placeholder="Name" class="form-control" required="">
                         </div>
                             @error('name')
-                            <p class="text-danger">{{ $message }}</p>
+                            <p class="text-danger" id="messagee">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
@@ -29,7 +29,7 @@
                             <input type="email" name="email" id="email" placeholder="Email" class="form-control" required="">
                         </div>
                             @error('email')
-                            <p class="text-danger">{{ $message }}</p>
+                            <p class="text-danger" id="messagee">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
@@ -39,7 +39,7 @@
                             <span class="input-group-text" id="basic-addon1" type="show" style="width: 40px; cursor: pointer;" onclick="myFunction()"><i class="fa fa-eye"></i></span>
                         </div>
                         @error('password')
-                            <p class="text-danger">{{ $message }}</p>
+                            <p class="text-danger" id="messagee">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
@@ -49,7 +49,7 @@
                             <span class="input-group-text" id="basic-addon1" type="show" style="width: 40px; cursor: pointer;" onclick="myFunctionConfirm()"><i class="fa fa-eye"></i></span>
                         </div>
                         @error('password_confirmation')
-                            <p class="text-danger">{{ $message }}</p>
+                            <p class="text-danger" id="messagee">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group mb-3 mt-1 col-sm-10 offset-sm-1">
@@ -62,7 +62,7 @@
                             <option value="Transgender">Transgender</option>
                         </select>
                         @error('gender')
-                            <p class="text-danger">{{ $message }}</p>
+                            <p class="text-danger" id="messagee">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="d-flex mt-4">
@@ -112,4 +112,8 @@ body{
             x.type = "password";
         }
     }
+    setTimeout(function() {
+        var msg = document.getElementById("messagee");
+        msg.parentNode.removeChild(msg);
+    }, 1500);
 </script>

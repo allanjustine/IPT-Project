@@ -6,6 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ContactController;
 use App\Models\Contact;
 use App\Models\Log;
@@ -52,6 +53,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/recent-post', [PostController::class, 'recentPosts']);
     Route::get('/my-post', [PostController::class, 'myPosts']);
 });
+
+
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/log', [SiteController::class, 'logs']);
     Route::get('/contact', [ContactController::class, 'index']);
@@ -59,8 +62,11 @@ Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/delete/{contact}', [ContactController::class, 'destroy']);
 
 });
+
+
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function() {
     Route::get('/', [IndexController::class, 'index'])->name('index');
     Route::resource('/roles', RoleController::class);
     Route::resource('/permissions', PermissionController::class);
+    Route::resource('/users', UserController::class);
 });

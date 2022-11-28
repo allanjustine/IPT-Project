@@ -74,8 +74,8 @@
                         {{($recent->title === 'Feeling In loved')? 'font-icon fa-solid fa-face-kiss-wink-hearts': '' }}
                         {{($recent->title === 'Feeling Incomplete')? 'font-icon fa-solid fa-face-dotted': '' }}
                         {{($recent->title === 'Feeling Cool')? 'font-icon fa-solid fa-face-sunglasses': '' }}
-                        {{($recent->title === 'Feeling Cool')? 'font-icon fa-solid fa-face-surprise': '' }}
-                        {{($recent->title === 'Feeling Cool')? 'font-icon fa-solid fa-face-sad-cry': '' }}
+                        {{($recent->title === 'Feeling Wow')? 'font-icon fa-solid fa-face-surprise': '' }}
+                        {{($recent->title === 'Feeling Cry')? 'font-icon fa-solid fa-face-sad-cry': '' }}
                         {{($recent->title === 'Feeling Explode')? 'font-icon fa-solid fa-face-explode': '' }}
                         {{($recent->title === 'Feeling Disguise')? 'font-icon fa-solid fa-face-disguise': '' }}
                         "></span></span>
@@ -111,7 +111,7 @@
             <h1 class="text-center">No one is posting yet.</h1>
         </div>
     @endif
-    <button onclick="topFunction()" id="myBtn" title="Go to top">Back to top</button>
+    <button onclick="topFunction()" id="myBtn" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
 </div>
 
 <style>
@@ -165,26 +165,25 @@
         display: none;
         position: fixed;
         bottom: 20px;
-        right: 30px;
+        right: 40px;
         z-index: 99;
-        font-size: 16px;
+        font-size: 25px;
         border: none;
         outline: none;
-        background-color: rgb(8, 61, 3);
-        background-color: rgb(9, 85, 2);
-        color: rgb(180, 175, 175);
+        background-color: rgb(3, 126, 138);
+        color: rgb(255, 255, 255);
         cursor: pointer;
         border-radius: 4px;
-        padding: 5px;
+        padding: 5px 10px 5px 10px;
+    }
+    #myBtn:hover {
+        background-color: rgb(12, 142, 154);
     }
     #write {
         background-color: rgba(116, 115, 115, 0.661);
     }
     .write-2 {
         border-radius: 20px;
-    }
-    #myBtn:hover {
-        background-color: rgb(8, 61, 3);
     }
     #lc {
         padding: 5px 50px 5px 50px;

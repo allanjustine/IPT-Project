@@ -71,7 +71,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col offset-sm-2 mb-2">
+                <div class="col offset-sm-1 mb-2">
                     <div class="card shadow">
                         <a href="/admin/roles" id="dash-link">
                             <div class="card-body rounded">
@@ -99,6 +99,23 @@
                                     <div class="col mt-2">
                                         <span class="text-white float-right" id="text">Total Permissions</span><br>
                                         <span class="text-white" id="text2">{{ $permissions }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col mb-2">
+                    <div class="card shadow">
+                        <a href="/admin/users" id="dash-link">
+                            <div class="card-body rounded">
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="fa fa-users text-white mt-2" id="dash-icon"></i>
+                                    </div>
+                                    <div class="col mt-4">
+                                        <span class="text-white float-right" id="text">Total Users</span><br>
+                                        <span class="text-white" id="text2">{{ $users }}</span>
                                     </div>
                                 </div>
                             </div>

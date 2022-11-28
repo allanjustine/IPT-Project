@@ -12,7 +12,9 @@ class DashRecentPost extends Component
         ->limit(50)
         ->get();
 
-        return compact('recents');
+
+        $allPosts = Post::count();
+        return compact('recents', 'allPosts');
     }
     public function render()
     {

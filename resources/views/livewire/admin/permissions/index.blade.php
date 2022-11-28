@@ -11,8 +11,8 @@
             <table class="table table-striped shadow table-bordered table-md table-hover">
                 <thead class="bg-primary text-white">
                     <tr>
-                        <td>Name</td>
-                        <td>Action</td>
+                        <th>Name</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>

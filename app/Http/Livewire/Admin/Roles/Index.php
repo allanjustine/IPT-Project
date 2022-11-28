@@ -21,7 +21,7 @@ class Index extends Component
             'name'                      =>          ['required', 'string', 'max:255', 'unique:roles'],
         ]);
         $roles = Role::create([
-            'name'                  =>      $this->name,
+            'name'                      =>          $this->name,
         ]);
 
         $log_entry = $roles->name . ' has been added';

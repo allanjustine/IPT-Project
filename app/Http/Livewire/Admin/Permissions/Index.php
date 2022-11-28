@@ -21,7 +21,7 @@ class Index extends Component
             'name'                      =>          ['required', 'string', 'max:255', 'unique:permissions'],
         ]);
         $permissions = Permission::create([
-            'name'                  =>      $this->name,
+            'name'                      =>          $this->name,
         ]);
 
         $log_entry = $permissions->name . ' has been added';

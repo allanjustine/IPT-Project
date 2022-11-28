@@ -14,7 +14,7 @@ class Index extends Component
     protected $paginationTheme = 'bootstrap';
 
     public function loadContacts() {
-        $query = Contact::orderBy('name')
+        $query = Contact::orderBy('id', 'asc')
             ->search($this->search);
 
             if ($this->sim_card != 'All') {

@@ -36,7 +36,6 @@ class AuthController extends Controller
         if(!$login){
             return back()->with('error', 'Password is incorrect');
         }
-
         return redirect('/dashboard');
     }
     public function registerForm() {
