@@ -50,4 +50,8 @@ class User extends Authenticatable
     public function logs() {
         return $this->hasMany(Log::class);
     }
+    public function getIsAdminAttribute()
+    {
+        return $this->roles()->where('id', 2)->exists();
+    }
 }

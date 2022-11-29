@@ -27,6 +27,8 @@ class AuthController extends Controller
 
         if(!$user || $user->email_verified_at == null) {
             return redirect('/')->with('error', 'Sorry your account is not yet verified or does not exist');
+
+            return redirect()->intended('admin');
         }
         $login = auth()->attempt([
             'email'     =>  $request->email,
@@ -36,7 +38,10 @@ class AuthController extends Controller
         if(!$login){
             return back()->with('error', 'Password is incorrect');
         }
-        return redirect('/dashboard');
+        if (auth()->user()->is_admin) {
+            return redirect()->intended('admin');
+        }
+        return redirect()->intended('dashboard');
     }
     public function registerForm() {
         if(auth()->check()) {

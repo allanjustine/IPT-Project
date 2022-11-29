@@ -15,7 +15,7 @@ class Index extends Component
     public function index() {
         $allPosts = Post::count();
         $visitors = Contact::count();
-        $posts = Post::where('user_id', '1')->count();
+        $posts = Post::where('user_id', auth()->user()->id)->count();
         $logs = Log::count();
         $permissions = Permission::count();
         $roles = Role::count();
