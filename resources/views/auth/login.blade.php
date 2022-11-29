@@ -33,7 +33,7 @@
                         <div class="input-group mb-3">
                             <span class="input-group-text" id="basic-addon1"><i class="fa fa-lock"></i></span>
                         <input type="password" name="password" id="password" placeholder="Password" class="form-control" required="">
-                        <span class="input-group-text" id="basic-addon1" type="show" style="width: 40px; cursor: pointer;" onclick="myFunction()"><i class="fa fa-eye"></i></span>
+                        <span class="input-group-text" id="basic-addon1" type="show" style="width: 40px; cursor: pointer;" onclick="myFunction()"><i class="fa fa-eye" id="eye"></i></span>
                         </div>
                         @error('password')
                             <p class="text-danger">{{ $message }}</p>
@@ -67,6 +67,9 @@ body{
 }
 #card-bodyy {
     background-image: linear-gradient(to right, rgb(99, 34, 228), rgb(19, 131, 65));
+}
+#eye:active {
+    color: blue;
 }
 </style>
 

@@ -236,3 +236,10 @@
     </div>
     {{-- end delete users modal --}}
 </div>
+
+
+<style>
+    .modal-content {
+        background-image: linear-gradient(to right, rgb(217, 217, 221), rgb(196, 196, 199), rgb(174, 175, 174));
+    }
+</style>
