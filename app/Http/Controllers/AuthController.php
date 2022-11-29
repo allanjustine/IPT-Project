@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\UserLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Spatie\Permission\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
@@ -58,7 +59,6 @@ class AuthController extends Controller
             'password'      =>          'required|confirmed|string:|min:6'
         ]);
 
-
         $token = Str::random(24);
 
         $user = User::create([
@@ -68,6 +68,7 @@ class AuthController extends Controller
             'password'              =>      bcrypt($request->password),
             'remember_token'        =>      $token
         ]);
+        $user->assignRole('writer');
         Mail::send('auth.verification-email', ['user' => $user], function($mail) use($user){
             $mail->to($user->email);
             $mail->subject('Account verification');

@@ -6,16 +6,23 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav d-flex align-items-center justify-content-center">
+            @role('admin')
             <li class="nav-item">
-            <a class="nav-link text-white {{ 'dashboard' == request()->path() ? 'active' : '' }}" href="{{ '/dashboard' }}">Dashboard</a>
+                <a style="margin-left: 20px" class="nav-link text-white {{ 'admin' == request()->path() ? 'active' : '' }}" href="{{ '/admin' }}">Dashboard</a>
             </li>
+            @endrole
+            @role('writer')
             <li class="nav-item">
-            <a class="nav-link text-white {{ 'recent-post' == request()->path() ? 'active' : '' }}" href="{{ '/recent-post' }}">Recent Posts</a>
+                <a class="nav-link text-white {{ 'dashboard' == request()->path() ? 'active' : '' }}" href="{{ '/dashboard' }}">Dashboard</a>
+            </li>
+            @endrole
+            <li class="nav-item">
+                <a class="nav-link text-white {{ 'recent-post' == request()->path() ? 'active' : '' }}" href="{{ '/recent-post' }}">Recent Posts</a>
             </li>
             @role('admin')
             <span class="nav-line"></span>
             <li class="nav-item">
-            <a class="nav-link text-white {{ 'contact' == request()->path() ? 'active' : '' }}" href="{{ '/contact' }}">Contacts</a>
+                <a class="nav-link text-white {{ 'contact' == request()->path() ? 'active' : '' }}" href="{{ '/contact' }}">Contacts</a>
             </li>
             <span class="nav-line"></span>
             <li class="nav-item">
@@ -28,9 +35,6 @@
                   Admin
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select3">
-                    <li class="nav-item">
-                        <a style="margin-left: 20px" class="nav-link text-white {{ 'admin' == request()->path() ? 'active' : '' }}" href="{{ '/admin' }}">Admin</a>
-                    </li>
                     <span class="nav-line"></span>
                     <li class="nav-item">
                         <a style="margin-left: 20px" class="nav-link text-white {{ 'admin/roles' == request()->path() ? 'active' : '' }}" href="{{ route('admin.roles.index') }}">Roles</a>
