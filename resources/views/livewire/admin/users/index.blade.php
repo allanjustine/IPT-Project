@@ -5,6 +5,7 @@
         @if (session('message'))
             <div class="alert alert-success text-black text-center" id="messagee">{{ session('message') }}</div>
         @endif
+        <div class='btn btn-primary btn-sm float-end mb-2' data-toggle="modal" data-target="#modal-user">Add User</div>
         <input type="search" class="form-control float-end mx-2" style="width: 250px;" placeholder="Search" wire:model.lazy="search">
         <div class="card-body">
             <table class="table table-striped shadow table-bordered table-md table-hover">

@@ -3,7 +3,9 @@
 namespace App\Http\Livewire\Admin\Users;
 
 use Livewire\Component;
+use Illuminate\Support\Str;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use App\Events\UserLog;
 use Livewire\WithPagination;
 
@@ -12,8 +14,36 @@ class Index extends Component
     use WithPagination;
 
     public $search='';
+    public $name, $email, $password, $gender, $password_confirmation;
 
     protected $paginationTheme = 'bootstrap';
+
+    public function addUser() {
+        $this->validate([
+            'name'                       =>          ['required', 'string', 'max:255', 'unique:users'],
+            'email'                      =>          ['required', 'email', 'max:255', 'unique:users'],
+            'gender'                     =>          ['required', 'string', 'max:255'],
+            'password'                   =>          ['required', 'confirmed', 'string', 'max:255', 'min:6']
+        ]);
+
+        $token = Str::random(24);
+
+        $users = User::create([
+            'name'                       =>          $this->name,
+            'email'                      =>          $this->email,
+            'gender'                     =>          $this->gender,
+            'password'                   =>          bcrypt($this->password),
+            'remember_token'             =>          $token
+        ]);
+        Mail::send('auth.verification-email', ['user' => $users], function($mail) use($users){
+            $mail->to($users->email);
+            $mail->subject('Account verification');
+        });
+
+        $log_entry = $users->name . ' has been added';
+        event(new UserLog($log_entry));
+        return redirect('admin/users')->with('message', ' New user added please verify their email to continue');
+    }
 
     public function editUsers(int $userId) {
         $user = User::find($userId);
