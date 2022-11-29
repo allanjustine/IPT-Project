@@ -8,7 +8,7 @@
             @if (session('message'))
                 <div id="messagee" class="alert text-black text-center text-black">{{ session('message') }}</div>
             @endif
-            <select class="form-select mb-1" wire:model.lazy="title">
+            <select class="form-select mb-1" id="searchh" wire:model.lazy="title">
                 <option value="All">All</option>
                 <option value="Feeling Sick">Feeling Sick</option>
                 <option value="Feeling Sad">Feeling Sad</option>
@@ -46,6 +46,15 @@
             @foreach ($recents as $recent)
             <div class="card shadow-md mt-3" style="width: 560px">
                 <div class="card-header" id="cardd">
+                    @role('admin')
+                    <span id="dot-icon" class="float-end dropdown dropstart">
+                        <span class="fa-solid fa-ellipsis-vertical text-black" type="button" data-bs-toggle="dropdown" aria-expanded="false"></span>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" data-toggle="modal" data-target="#click-delete-recent" wire:click="delete({{ $recent->id }})">Delete</a></li>
+                            <li><a class="dropdown-item" data-toggle="modal" data-target="#click-edit-recent" wire:click="editPosts({{ $recent->id }})">Edit</a></li>
+                        </ul>
+                    </span>
+                    @endrole
                     <span class="float-end" id="titlee">
                         <span class="float-end" id="titleee">-{{ $recent->title }}</span>
                         <span class="
@@ -124,7 +133,7 @@
     .name:hover {
         color: rgb(204, 202, 202);
     }
-    .form-select {
+    #searchh {
         background-color: rgba(116, 115, 115, 0.661);
         color: whitesmoke;
     }
@@ -244,6 +253,51 @@
         padding: 4px;
         height: 40px;
         border-radius: 50%;
+    }
+    #write {
+        background-color: rgba(116, 115, 115, 0.661);
+    }
+    .write-2 {
+        border-radius: 20px;
+    }
+    .write-2:hover {
+        background-color: rgba(255, 255, 255, 0.789);
+    }
+    #modall {
+        background-color: rgb(52, 52, 52);
+        margin-top: 20%;
+    }
+    .title1 {
+        margin-left: 38%;
+    }
+    .title2 {
+        margin-left: 35%;
+    }
+    .title3 {
+        margin-left: 8%;
+    }
+    .close {
+        border-radius: 50%;
+        background-color: rgb(65, 64, 64);
+        border: 1px solid rgb(65, 64, 64);
+        width: 30px;
+    }
+    .close span {
+        color: whitesmoke;
+    }
+    .close:hover {
+        background-color: rgb(125, 121, 121);
+    }
+    #rm {
+        background-color: rgb(52, 52, 52);
+        color: whitesmoke;
+    }
+    #text-area {
+        border: none;
+        background-color: transparent;
+        resize: none;
+        outline: none;
+        color: white;
     }
 </style>
 

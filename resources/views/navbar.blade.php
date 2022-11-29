@@ -32,7 +32,7 @@
 
             <div class="dropdown">
                 <a class="btn dropdown-toggle" id="buttt" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Admin
+                  Admin Settings
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="select3">
                     <span class="nav-line"></span>
@@ -86,6 +86,7 @@
     #buttt {
         border: none;
         background-color: rgba(17, 162, 172, 0.37);
+        width: 145px;
         color: rgb(255, 255, 255);
     }
     #buttt:hover {

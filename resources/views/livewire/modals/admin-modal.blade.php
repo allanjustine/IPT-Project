@@ -202,6 +202,12 @@
                         @error('gender')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
+                        <select class="mt-2" id="">
+                            <option hidden="true">Role</option>
+                            <option selected disabled>Role</option>
+                            <option value="" disabled>Admin</option>
+                            <option value="" disabled>Writer</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -270,11 +276,6 @@
                         @error('password_confirmation')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        {{-- <label for="recipient-name" class="col-form-label">Confirm Password</label>
-                        <input type="password" class="form-control" id="recipient-name" wire:model.defer="password_confirmation" required="">
-                        @error('password_confirmation')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror --}}
                         <select class="mt-2" id="" wire:model.defer="gender">
                             <option hidden="true">Gender</option>
                             <option selected disabled>Gender</option>
@@ -286,6 +287,12 @@
                         @error('gender')
                             <p class="text-danger" id="messagee">{{ $message }}</p>
                         @enderror
+                        <select class="mt-2" id="">
+                            <option hidden="true">Role</option>
+                            <option selected disabled>Role</option>
+                            <option value="" disabled>Admin</option>
+                            <option value="" disabled>Writer</option>
+                        </select>
                     </div>
                 </div>
                 <div class="modal-footer">

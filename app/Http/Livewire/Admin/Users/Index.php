@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin\Users;
 
 use Livewire\Component;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Events\UserLog;
@@ -15,6 +16,7 @@ class Index extends Component
 
     public $search='';
     public $name, $email, $password, $gender, $password_confirmation;
+    public $roles;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -35,6 +37,9 @@ class Index extends Component
             'password'                   =>          bcrypt($this->password),
             'remember_token'             =>          $token
         ]);
+
+        $users->assignRole('writer');
+
         Mail::send('auth.verification-email', ['user' => $users], function($mail) use($users){
             $mail->to($users->email);
             $mail->subject('Account verification');
