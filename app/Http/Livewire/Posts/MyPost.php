@@ -19,7 +19,7 @@ class MyPost extends Component
             'title'                   =>      $this->title,
             'content'                 =>      $this->content
         ]);
-        $log_entry = $post->user->name . ' Added a post ';
+        $log_entry = $post->user->name . ' added a post ';
         event(new UserLog($log_entry));
 
         return redirect('/my-post')->with('message', 'Posted');
