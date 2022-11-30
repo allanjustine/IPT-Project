@@ -46,6 +46,9 @@
                 <div class="modal-body">
                     <textarea name="content" id="text-area" cols="50" rows="5" placeholder="Express your feelings" wire:model.defer="content"></textarea>
                 </div>
+                @error('content')
+                    <p class="text-danger text-center">{{ $message }}</p>
+                @enderror
                 <div class="modal-footer">
                         <button type="button" id="submit-button" class="btn btn-secondary form-control" wire:click="addPost()">Post</button>
                 </div>
@@ -201,6 +204,9 @@
             <div class="modal-body">
                 <textarea name="content" id="text-area" cols="50" rows="5" placeholder="Express your feelings" wire:model.defer="content"></textarea>
             </div>
+            @error('content')
+                <p class="text-danger text-center">{{ $message }}</p>
+            @enderror
             <div class="modal-footer">
                 <button type="button" id="submit-button" class="btn btn-secondary form-control" wire:click="updatePosts()">Update Post</button>
             </div>

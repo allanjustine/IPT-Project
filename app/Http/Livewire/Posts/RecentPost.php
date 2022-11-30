@@ -39,7 +39,7 @@ class RecentPost extends Component
             'title'                        =>      $this->title,
             'content'                      =>      $this->content,
         ]);
-        $log_entry =  ' Post updated ';
+        $log_entry = auth()->user()->name . ' updated a post';
         event(new UserLog($log_entry));
 
         return redirect('recent-post')->with('message', ' Post updated successfully');
@@ -52,7 +52,7 @@ class RecentPost extends Component
 
         Post::find($this->postDelete)->delete();
 
-        $log_entry =  ' Post deleted ';
+        $log_entry = auth()->user()->name . ' deleted a post';
         event(new UserLog($log_entry));
 
         return redirect('/my-post')->with('message', ' Post has been deleted successfully');
