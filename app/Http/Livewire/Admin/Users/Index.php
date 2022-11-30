@@ -45,8 +45,9 @@ class Index extends Component
             $mail->subject('Account verification');
         });
 
-        $log_entry = $users->name . ' has been added';
+        $log_entry = auth()->user()->name . ' added ' . $users->name . ' user';
         event(new UserLog($log_entry));
+
         return redirect('admin/users')->with('message', ' New user added please verify their email to continue');
     }
 
@@ -63,7 +64,7 @@ class Index extends Component
     }
     public function updateUsers() {
         $this->validate([
-            'email'                      =>          ['required', 'string', 'max:255', 'unique:users'],
+            'email'                      =>          ['required', 'string','email', 'max:255', 'unique:users,email,'],
         ]);
 
         User::where('id', $this->userId)->update([
@@ -72,7 +73,7 @@ class Index extends Component
             'gender'           =>      $this->gender,
         ]);
 
-        $log_entry =  ' User updated ';
+        $log_entry =  auth()->user()->name . ' updated a user';
         event(new UserLog($log_entry));
 
         return redirect('admin/users')->with('message', ' User updated successfully');
@@ -86,7 +87,7 @@ class Index extends Component
 
         User::find($this->userDelete)->delete();
 
-        $log_entry =  ' User deleted ';
+        $log_entry =  auth()->user()->name . ' deleted a user';
         event(new UserLog($log_entry));
 
         return redirect('admin/users')->with('message', 'User has been deleted successfully');

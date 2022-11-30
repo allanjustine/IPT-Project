@@ -24,7 +24,7 @@ class Index extends Component
             'name'                      =>          $this->name,
         ]);
 
-        $log_entry = $roles->name . ' has been added';
+        $log_entry = auth()->user()->name .  ' added ' . $roles->name . ' roles';
         event(new UserLog($log_entry));
         return redirect('admin/roles')->with('message', ' New role added');
     }
@@ -47,7 +47,7 @@ class Index extends Component
             'name'             =>      $this->name,
         ]);
 
-        $log_entry =  ' Roles updated ';
+        $log_entry =  auth()->user()->name . ' updated a roles';
         event(new UserLog($log_entry));
 
         return redirect('admin/roles')->with('message', ' Roles updated successfully');
@@ -61,7 +61,7 @@ class Index extends Component
 
         Role::find($this->roleDelete)->delete();
 
-        $log_entry =  ' Roles deleted ';
+        $log_entry =  auth()->user()->name . ' deleted a roles';
         event(new UserLog($log_entry));
 
         return redirect('admin/roles')->with('message', 'Roles has been deleted successfully');

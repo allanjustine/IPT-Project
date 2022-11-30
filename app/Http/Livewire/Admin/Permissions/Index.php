@@ -24,7 +24,7 @@ class Index extends Component
             'name'                      =>          $this->name,
         ]);
 
-        $log_entry = $permissions->name . ' has been added';
+        $log_entry = auth()->user()->name . ' added ' . $permissions->name . ' permission';
         event(new UserLog($log_entry));
         return redirect('admin/permissions')->with('message', ' New permissions added');
     }
@@ -48,7 +48,7 @@ class Index extends Component
             'name'             =>      $this->name,
         ]);
 
-        $log_entry =  ' Permissions updated ';
+        $log_entry =  auth()->user()->name . ' updated a permissions';
         event(new UserLog($log_entry));
 
         return redirect('admin/permissions')->with('message', ' Permissions updated successfully');
@@ -62,7 +62,7 @@ class Index extends Component
 
         Permission::find($this->permissionDelete)->delete();
 
-        $log_entry = ' Permissions deleted ';
+        $log_entry = auth()->user()->name . ' deleted a permissions';
         event(new UserLog($log_entry));
 
         return redirect('admin/permissions')->with('message', 'Permissions has been deleted successfully');

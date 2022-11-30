@@ -22,7 +22,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Add Roles</button>
+                <button type="submit" class="btn btn-success"><div wire:loading><svg class="loading"></svg></div> Add Roles</button>
             </div>
             </form>
             </div>
@@ -52,7 +52,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-success">Update Roles</button>
+                    <button type="submit" class="btn btn-success"><div wire:loading><svg class="loading"></svg></div> Update Roles</button>
                 </div>
             </div>
             </form>
@@ -76,7 +76,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" wire:click="deleteRoles()">Delete Roles</button>
+                <button type="submit" class="btn btn-success" wire:click="deleteRoles()"><div wire:loading><svg class="loading"></svg></div> Delete Roles</button>
             </div>
             </div>
         </div>
@@ -106,7 +106,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Add Permissions</button>
+                <button type="submit" class="btn btn-success"><div wire:loading><svg class="loading"></svg></div> Add Permissions</button>
                 </div>
                 </form>
             </div>
@@ -137,7 +137,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" wire:click="updatePermissions()">Update Permissions</button>
+                <button type="submit" class="btn btn-success" wire:click="updatePermissions()"><div wire:loading><svg class="loading"></svg></div> Update Permissions</button>
                 </div>
                 </form>
             </div>
@@ -160,7 +160,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" wire:click="deletePermissions()">Delete Permissions</button>
+                <button type="submit" class="btn btn-success" wire:click="deletePermissions()"><div wire:loading><svg class="loading"></svg></div> Delete Permissions</button>
             </div>
             </div>
         </div>
@@ -212,7 +212,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Update User</button>
+                <button type="submit" class="btn btn-success"><div wire:loading><svg class="loading"></svg></div> Update User</button>
                 </div>
                 </form>
             </div>
@@ -235,7 +235,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success" wire:click="deleteUsers()">Delete User</button>
+                <button type="submit" class="btn btn-success" wire:click="deleteUsers()"><div wire:loading><svg class="loading"></svg></div> Delete User</button>
             </div>
             </div>
         </div>
@@ -297,7 +297,7 @@
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Add User</button>
+                <button type="submit" class="btn btn-success"><div wire:loading><svg class="loading"></svg></div> Add User</button>
                 </div>
                 </form>
             </div>
@@ -317,5 +317,19 @@
     }
     #closee:hover {
         background-color: rgb(171, 166, 166);
+    }
+    .loading {
+        border: 5px solid rgba(255, 255, 255, 0.359);
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        border-top: 5px solid rgb(246, 246, 246);
+        animation: rotate 0.8s infinite;
+        justify-items: center;
+        display: inline-block;
+    }
+    @keyframes rotate {
+        0% {transform: rotate(0deg);}
+        100% {transform: rotate(360deg);}
     }
 </style>

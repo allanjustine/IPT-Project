@@ -38,6 +38,7 @@
         <div class="card-footer">
             <div class="d-flex justify-content-center">
                 <button class="btn btn-danger" wire:click="delete()">
+                    <div wire:loading><svg class="loading"></svg></div>
                     Delete
                 </button>
                 <button class="btn btn-info mx-2" wire:click="back()">
@@ -49,3 +50,19 @@
 
 </div>
 
+<style>
+    .loading {
+        border: 5px solid rgba(255, 255, 255, 0.359);
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        border-top: 5px solid rgb(246, 246, 246);
+        animation: rotate 0.8s infinite;
+        justify-items: center;
+        display: inline-block;
+    }
+    @keyframes rotate {
+        0% {transform: rotate(0deg);}
+        100% {transform: rotate(360deg);}
+    }
+</style>

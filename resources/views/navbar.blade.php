@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light shadow">
     <img src="{{ asset('images/b.png') }}" alt="logo" class="img-fluid rounded-circle img-responsive" title="brand logo" style="width: 60px; margin-left: 50px; cursor: pointer">
-    <h2 class="p-2 text-white" style="font-family: Comic Sans MS"><span style="color:rgb(3, 3, 114)">Talk</span>Tak<span style="color:rgb(13, 243, 63)">Tik</span></h2>
+    <a href="#" style="text-decoration: none;"> <h2 class="p-2 text-white" style="font-family: Comic Sans MS"><span style="color:rgb(3, 3, 114)">Talk</span>Tak<span style="color:rgb(13, 243, 63)">Tik</span></h2></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>

@@ -28,7 +28,8 @@ class Create extends Component
 
         $log_entry = 'Added an contact "' . $contact->name . '" with the ID# of ' . $contact->id;
         event(new UserLog($log_entry));
-
+        sleep(3);
+        $this->reset();
         return redirect('/contact')->with('message', $this->name . ' has been added successfully');
     }
 
