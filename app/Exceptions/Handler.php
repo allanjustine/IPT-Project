@@ -47,6 +47,9 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+        $this->renderable(function (\Spatie\Permission\Exceptions\UnauthorizedException $e, $request) {
+            return back();
+        });
     }
     protected function unauthenticated($request, AuthenticationException $exception)
     {
@@ -54,4 +57,5 @@ class Handler extends ExceptionHandler
         ? response()->json(['error' => $exception->getMessage()], 401)
         : redirect()->guest(route('login'))->with('error', 'Please login first or register an account to continue');
     }
+
 }

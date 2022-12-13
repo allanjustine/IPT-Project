@@ -42,6 +42,20 @@ Route::get('logout', [AuthController::class, 'logout']);
 // grouping the middleware
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
+    // Route::get('/dashboard', function() {
+    //     $allPosts = Post::count();
+    //     $visitors = Contact::count();
+    //     $posts = Post::where('user_id', auth()->user()->id)->count();
+    //     $logs = Log::count();
+
+    //     return view('/dashboard', compact('allPosts', 'visitors', 'logs', 'posts'));
+    // });
+    Route::get('/recent-post', [PostController::class, 'recentPosts']);
+    Route::get('/my-post', [PostController::class, 'myPosts']);
+});
+
+
+Route::group(['middleware' => ['auth', 'role:writer']], function () {
     Route::get('/dashboard', function() {
         $allPosts = Post::count();
         $visitors = Contact::count();
@@ -50,11 +64,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
         return view('/dashboard', compact('allPosts', 'visitors', 'logs', 'posts'));
     });
-    Route::get('/recent-post', [PostController::class, 'recentPosts']);
-    Route::get('/my-post', [PostController::class, 'myPosts']);
+
 });
-
-
 Route::group(['middleware' => ['auth', 'role:admin']], function () {
     Route::get('/log', [SiteController::class, 'logs']);
     Route::get('/contact', [ContactController::class, 'index']);

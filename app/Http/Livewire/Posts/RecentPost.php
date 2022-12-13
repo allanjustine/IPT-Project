@@ -35,7 +35,6 @@ class RecentPost extends Component
         ]);
 
         Post::where('id', $this->post_id)->update([
-            'user_id'                      =>      auth()->user()->id,
             'title'                        =>      $this->title,
             'content'                      =>      $this->content,
         ]);

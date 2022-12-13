@@ -50,7 +50,7 @@
                     <p class="text-danger text-center">{{ $message }}</p>
                 @enderror
                 <div class="modal-footer">
-                        <button type="button" id="submit-button" class="btn btn-secondary form-control" wire:click="addPost()"><div wire:loading><svg class="loading"></svg></div> Post</button>
+                        <button type="button" id="submit-button-1" class="btn btn-secondary form-control" wire:click="addPost()"><div wire:loading><svg class="loading"></svg></div> Post</button>
                 </div>
             </div>
         </div>

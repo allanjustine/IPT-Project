@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 use App\Events\UserLog;
 use Livewire\WithPagination;
+use Spatie\Permission\Models\Role;
 
 class Index extends Component
 {

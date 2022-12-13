@@ -287,12 +287,15 @@
                         @error('gender')
                             <p class="text-danger" id="messagee">{{ $message }}</p>
                         @enderror
-                        <select class="mt-2" id="">
+                        <select class="mt-2" id="" wire:model.defer="role">
                             <option hidden="true">Role</option>
                             <option selected disabled>Role</option>
-                            <option value="" disabled>Admin</option>
-                            <option value="" disabled>Writer</option>
+                            <option value="admin" disabled>Admin</option>
+                            <option value="writer" disabled>Writer</option>
                         </select>
+                        @error('role')
+                            <p class="text-danger" id="messagee">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">

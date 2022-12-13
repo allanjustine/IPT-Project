@@ -16,7 +16,7 @@
                     <div id="messagee" class="alert text-black text-center text-black">{{ session('message') }}</div>
                 @endif
                 @foreach ($posts as $post)
-                <div class="card shadow-md mt-3" id="cardd" style="width: 560px">
+                <div class="card shadow-md mt-3" id="carddd" style="width: 560px">
                     <div class="card-header">
                         @if($post->isEditable())
                         <span id="dot-icon" class="float-end dropdown dropstart">
@@ -146,7 +146,7 @@
     .close:hover {
         background-color: rgb(125, 121, 121);
     }
-    #cardd {
+    #carddd {
         background-color: rgba(116, 115, 115, 0.661);
         color: whitesmoke;
     }
@@ -254,7 +254,7 @@
     #dot-icon:hover {
         background-color: rgb(230, 224, 224);;
     }
-    #submit-button:disabled {
+    #submit-button-1:disabled {
         cursor: not-allowed;
         pointer-events: all !important;
     }
@@ -284,14 +284,14 @@
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;
     }
-    document.getElementById('submit-button').disabled = true;
+    document.getElementById('submit-button-1').disabled = true;
 
     document.getElementById('text-area').addEventListener('keyup', e => {
    //Check for the input's value
     if (e.target.value == "") {
-        document.getElementById('submit-button').disabled = true;
+        document.getElementById('submit-button-1').disabled = true;
     } else {
-        document.getElementById('submit-button').disabled = false;
+        document.getElementById('submit-button-1').disabled = false;
     }
     });
 

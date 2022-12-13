@@ -67,18 +67,49 @@
                     ">
                     <span id="profile-name"><a href="{{ '/my-post' }}">{{Auth::user()->name}}</a></span>
                     <li><a class="dropdown-item mt-4" href="{{ '/my-post' }}" id="select"><i class="fa-light fa-square-user"></i> My Post</a></li>
-                    <li><a href="{{ '/logout' }}" class="dropdown-item" id="select"><i class="fa-regular fa-right-from-bracket"></i> Logout</a></li>
+                    <li><a href="#" class="dropdown-item" id="select" data-toggle="modal" data-target="#modal-logout"><i class="fa-regular fa-right-from-bracket" ></i> Logout</a></li>
                 </ul>
             </div>
         </ul>
     </div>
 </nav>
 
+
+<div wire:ignore.self class="modal fade" id="modal-logout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" id="log-out-a">
+            <div class="modal-header">
+                <h5 class="modal-title title3 text-black" id="exampleModalLabel">Are you sure you want to proceed to logout?</h5>
+                <button type="button" class="close-logout" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="text-center text-black">You will redirect to log in page</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" id="closee" data-dismiss="modal">Close</button>
+                <a href="{{ '/logout' }}"><button type="button" id="submit-button" class="btn btn-danger form-control">Yes</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <style>
     #profile-name {
         font-size: 18px;
         border-bottom: 1px solid white;
         padding-bottom: 10px;
+    }
+    .close-logout:hover {
+        background-color: rgb(92, 89, 89);
+    }
+    .close-logout {
+        color: white;
+        border-radius: 50%;
+        background-color: rgb(113, 111, 111);
+        border: none;
+        width: 30px;
     }
     #profile-image {
         margin-left: 15px;
@@ -130,5 +161,15 @@
     }
     #select2 li:hover {
         background-color: rgb(17, 162, 172);
+    }
+    #closee {
+        border: 1px solid rgb(107, 107, 107);
+        background-color: rgb(216, 214, 214);
+    }
+    #closee:hover {
+        background-color: rgb(171, 166, 166);
+    }
+    #log-out-a {
+        background-image: linear-gradient(to right, rgb(217, 217, 221), rgb(196, 196, 199), rgb(174, 175, 174));
     }
 </style>
