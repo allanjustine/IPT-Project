@@ -117,7 +117,11 @@
     </div>
     @if($recents->isEmpty())
         <div class="text-gray-500">
-            <h1 class="text-center">No one is posting yet.</h1>
+            <h1 class="text-center">No
+                <span class="search1 {{ ($search === null ? 'all': '') }}">{{ $search }}</span>
+                <span class="search1{{ ($title === null ? 'all': '') }}">{{ $title }}</span>
+                post.
+            </h1>
         </div>
     @endif
     <button onclick="topFunction()" id="myBtn" title="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
@@ -298,6 +302,15 @@
         resize: none;
         outline: none;
         color: white;
+    }
+    .search1::before {
+        content: '"';
+    }
+    .search1::after {
+        content: '"';
+    }
+    .all {
+        display: none;
     }
 </style>
 

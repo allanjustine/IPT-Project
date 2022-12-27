@@ -3,8 +3,8 @@
     <table class="table table-striped shadow border border-light table-hover">
         <div class="row">
             <div class="col">
-                <select class="form-select" wire:model.lazy="sim_card" style="width: 120px; margin-left: 440px">
-                    <option value="All">All</option>
+                <select class="form-select" wire:model.lazy="sim_card" style="width: 135px; margin-left: 430px">
+                    <option value="All">All Sim Card</option>
                     <option value="TNT">TNT</option>
                     <option value="Sun">Sun</option>
                     <option value="Globe">Globe</option>
@@ -48,7 +48,7 @@
             @endforeach
             @if($contacts->count() == 0)
                 <td colspan="8" class="text-center">
-                    No contacts found in this table.
+                    {{ $search }} contact not found in this table.
                 </td>
             @endif
 

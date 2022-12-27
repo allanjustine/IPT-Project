@@ -31,7 +31,7 @@
                     @endforeach
                     @if($users->count() == 0)
                         <td colspan="4" class="text-center">
-                            No users found in this table.
+                            {{ '"' . $search . '"' }} user not found in this table.
                         </td>
                     @endif
                 </tbody>

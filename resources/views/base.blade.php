@@ -14,7 +14,7 @@
     @livewireStyles
 </head>
 
-<body style="background-color: rgba(10, 4, 47, 0.153); height: 115vh; overflow:auto">
+<body>
     @yield('content')
 
     @livewire('livewire-ui-modal')
@@ -32,3 +32,12 @@
         msg.parentNode.removeChild(msg);
     }, 1500);
 </script>
+
+<style>
+    body {
+        scroll-behavior: smooth;
+        background-color: rgba(10, 4, 47, 0.153);
+        height: 115vh;
+        overflow:auto
+    }
+</style>
