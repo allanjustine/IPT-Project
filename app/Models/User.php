@@ -24,7 +24,7 @@ class User extends Authenticatable
         'email',
         'gender',
         'password',
-        'role',
+        'roles',
         'remember_token',
     ];
 

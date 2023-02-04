@@ -202,12 +202,16 @@
                         @error('gender')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <select class="mt-2" id="">
-                            <option hidden="true">Role</option>
-                            <option selected disabled>Role</option>
-                            <option value="" disabled>Admin</option>
-                            <option value="" disabled>Writer</option>
+                        <select wire:model.lazy="role" required>
+                            <option hidden="true">Select Role</option>
+                            <option selected disabled>Select Role</option>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
                         </select>
+                        @error('role')
+                            <p class="text-danger" id="messagee">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -276,7 +280,7 @@
                         @error('password_confirmation')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
-                        <select class="mt-2" id="" wire:model.defer="gender">
+                        <select class="mt-2" id="" wire:model.defer="gender" required>
                             <option hidden="true">Gender</option>
                             <option selected disabled>Gender</option>
                             <option value="Male">Male</option>
@@ -287,11 +291,12 @@
                         @error('gender')
                             <p class="text-danger" id="messagee">{{ $message }}</p>
                         @enderror
-                        <select class="mt-2" id="" wire:model.defer="role">
-                            <option hidden="true">Role</option>
-                            <option selected disabled>Role</option>
-                            <option value="admin" disabled>Admin</option>
-                            <option value="writer" disabled>Writer</option>
+                        <select wire:model.lazy="role" required>
+                            <option hidden="true">Select Role</option>
+                            <option selected disabled>Select Role</option>
+                                @foreach($roles as $role)
+                                    <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                @endforeach
                         </select>
                         @error('role')
                             <p class="text-danger" id="messagee">{{ $message }}</p>

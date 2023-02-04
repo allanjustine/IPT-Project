@@ -17,7 +17,7 @@ class Index extends Component
 
     public $search='';
     public $name, $email, $password, $gender, $password_confirmation;
-    public $roles;
+    public $role;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -26,7 +26,8 @@ class Index extends Component
             'name'                       =>          ['required', 'string', 'max:255', 'unique:users'],
             'email'                      =>          ['required', 'email', 'max:255', 'unique:users'],
             'gender'                     =>          ['required', 'string', 'max:255'],
-            'password'                   =>          ['required', 'confirmed', 'string', 'max:255', 'min:6']
+            'password'                   =>          ['required', 'confirmed', 'string', 'max:255', 'min:6'],
+            'role'                       =>          ['required']
         ]);
 
         $token = Str::random(24);
@@ -39,7 +40,7 @@ class Index extends Component
             'remember_token'             =>          $token
         ]);
 
-        $users->assignRole('writer');
+        $users->assignRole(Role::find($this->role));
 
         Mail::send('auth.verification-email', ['user' => $users], function($mail) use($users){
             $mail->to($users->email);
@@ -65,19 +66,23 @@ class Index extends Component
     }
     public function updateUsers() {
         $this->validate([
-            'email'                      =>          ['required', 'string','email', 'max:255', 'unique:users,email,'],
+            'email'                      =>          ['required', 'string','email', 'max:255', 'unique:users,email,' . $this->userId],
         ]);
-
-        User::where('id', $this->userId)->update([
+        $user = User::find($this->userId);
+        $user->update([
             'name'             =>      $this->name,
             'email'            =>      $this->email,
             'gender'           =>      $this->gender,
         ]);
+        $user->syncRoles($this->role);
+        $user->save();
 
         $log_entry =  auth()->user()->name . ' updated a user';
         event(new UserLog($log_entry));
 
         return redirect('admin/users')->with('message', ' User updated successfully');
+
+        $this->reset();
     }
 
     public function delete($userId) {
@@ -95,6 +100,7 @@ class Index extends Component
     }
     public function render()
     {
+        $this->roles = Role::all();
         $users = User::where('name', 'like', '%' . $this->search . '%')->orderBy('id')->paginate(5);
         return view('livewire.admin.users.index', compact('users'));
     }

@@ -14,6 +14,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Gender</th>
+                        <th>Role</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -23,6 +24,11 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>{{ $user->gender }}</td>
+                        <td>
+                            @foreach ($user->roles as $role)
+                                {{ $role->name }}
+                            @endforeach
+                        </td>
                         <td>
                             <a href="" class="btn btn-primary" id="ic" title="Edit" data-toggle="modal" data-target="#update-modal-users" wire:click="editUsers({{ $user->id }})"><i class=" fa fa-gear"></i></a>
                             <a href="" class="btn btn-danger" id="ic" title="Delete" data-toggle="modal" data-target="#delete-modal-users" wire:click="delete({{ $user->id }})"><i class=" fa fa-trash"></i></a>
@@ -42,6 +48,7 @@
         </div>
     </div>
 </div>
+
 <style>
     .close {
         border-radius: 50%;
