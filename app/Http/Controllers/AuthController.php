@@ -67,7 +67,7 @@ class AuthController extends Controller
             'remember_token'        =>      $token
         ]);
 
-        $user->assignRole('writer');
+        $user->assignRole('user');
 
         Mail::send('auth.verification-email', ['user' => $user], function($mail) use($user){
             $mail->to($user->email);

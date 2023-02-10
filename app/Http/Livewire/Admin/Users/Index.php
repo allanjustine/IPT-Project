@@ -18,6 +18,8 @@ class Index extends Component
     public $search='';
     public $name, $email, $password, $gender, $password_confirmation;
     public $role;
+    public $roles;
+    public $userId, $userDelete;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -60,6 +62,7 @@ class Index extends Component
             $this->name = $user->name;
             $this->email = $user->email;
             $this->gender = $user->gender;
+            $this->role = User::find($this->userId)->roles->pluck('id')->toArray();
         }else{
             return redirect()->to('admin/users');
         }

@@ -6,13 +6,15 @@ use App\Events\UserLog;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class Index extends Component
 {
     use WithPagination;
-
+    public $roles;
     public $name;
     public $search='';
+    public $permissionId, $permissionDelete;
 
     protected $paginationTheme = 'bootstrap';
 
@@ -69,6 +71,7 @@ class Index extends Component
     }
     public function render()
     {
+        $this->roles = Role::all();
         $permissions = Permission::where('name', 'like', '%' . $this->search . '%')->orderBy('id')->paginate(5);
         return view('livewire.admin.permissions.index', compact('permissions'));
     }

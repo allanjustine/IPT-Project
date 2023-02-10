@@ -27,7 +27,7 @@ class PermissionsSeeder extends Seeder
         Permission::create(['name' => 'unpublish articles']);
 
         // create roles and assign existing permissions
-        $role1 = Role::create(['name' => 'writer']);
+        $role1 = Role::create(['name' => 'user']);
         $role1->givePermissionTo('edit articles');
         $role1->givePermissionTo('delete articles');
 
@@ -42,7 +42,7 @@ class PermissionsSeeder extends Seeder
         // create demo users
         $user = \App\Models\User::factory()->create([
             'name' => 'User',
-            'email' => 'user@gmail.com.com',
+            'email' => 'user@gmail.com',
             'gender'                => 'Male',
             'email_verified_at'     =>  now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

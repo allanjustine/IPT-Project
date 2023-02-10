@@ -11,7 +11,7 @@
                 <a style="margin-left: 20px" class="nav-link text-white {{ 'admin' == request()->path() ? 'active' : '' }}" href="{{ '/admin' }}">Dashboard</a>
             </li>
             @endrole
-            @role('writer')
+            @role('user')
             <li class="nav-item">
                 <a class="nav-link text-white {{ 'dashboard' == request()->path() ? 'active' : '' }}" href="{{ '/dashboard' }}">Dashboard</a>
             </li>

@@ -55,7 +55,7 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 });
 
 
-Route::group(['middleware' => ['auth', 'role:writer']], function () {
+Route::group(['middleware' => ['auth', 'role:user']], function () {
     Route::get('/dashboard', function() {
         $allPosts = Post::count();
         $visitors = Contact::count();

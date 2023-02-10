@@ -11,6 +11,7 @@ class Index extends Component
 {
     use WithPagination;
     public $name;
+    public $roleId, $roleDelete;
 
     public $search='';
 
