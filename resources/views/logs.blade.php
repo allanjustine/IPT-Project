@@ -16,10 +16,10 @@
             </thead>
             <tbody>
                 @foreach ($logs as $log)
-                <tr>
-                    <td>{{ $log->created_at->format('l, d F Y g:i A') }}</td>
-                    <td>{{ $log->log_entry }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ $log->created_at->format('l, d F Y g:i A') }}</td>
+                        <td>{{ $log->log_entry }}</td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>
@@ -31,4 +31,3 @@
         </div>
     </div>
 @endsection
-

@@ -42,6 +42,7 @@ class PermissionsSeeder extends Seeder
         // create demo users
         $user = \App\Models\User::factory()->create([
             'name' => 'User',
+            'image' =>fake()->image('storage/app/public/images', 640, 480, null, false),
             'email' => 'user@gmail.com',
             'gender'                => 'Male',
             'email_verified_at'     =>  now(),
@@ -52,6 +53,7 @@ class PermissionsSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Admin',
+            'image' =>fake()->image('storage/app/public/images', 640, 480, null, false),
             'email' => 'admin@gmail.com',
             'gender'                => 'Female',
             'email_verified_at'     =>  now(),
@@ -62,6 +64,7 @@ class PermissionsSeeder extends Seeder
 
         $user = \App\Models\User::factory()->create([
             'name' => 'Super-Admin',
+            'image' =>fake()->image('storage/app/public/images', 640, 480, null, false),
             'email' => 'superadmin@gmail.com',
             'gender'                => 'Male',
             'email_verified_at'     =>  now(),

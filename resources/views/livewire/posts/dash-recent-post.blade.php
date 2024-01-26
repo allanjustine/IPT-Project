@@ -4,8 +4,7 @@
             <span>Total Posts: <span class="all-posts px-2">{{ $allPosts }}</span></span>
             @foreach ($recents as $recent)
             <div class="row">
-                <span class="name mt-3"> {{ $recent->user->name }} <span class="time">has a post</span></span>
-                <span class="time">at {{ $recent->created_at->format('g:i A') }} </span>
+                <span class="name mt-3"> {{ $recent->user->name }} <span class="time">has a post {{ $recent->created_at->diffForHumans() }}</span></span>
             </div>
             @endforeach
             @if($recents->isEmpty())

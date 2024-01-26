@@ -181,6 +181,14 @@
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
+                        @if($image)
+                            <p><img src="{{ $image->temporaryUrl() }}" width="100" alt=""></p>
+                        @endif
+                        <label for="recipient-name" class="col-form-label">Profile Image</label>
+                        <input type="file" class="form-control" id="recipient-name" wire:model.defer="image" required="">
+                        @error('image')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                         <label for="recipient-name" class="col-form-label">Name</label>
                         <input type="text" class="form-control" id="recipient-name" wire:model.defer="name" required="">
                         @error('name')
@@ -260,6 +268,14 @@
                 <div class="modal-body">
                     @csrf
                     <div class="form-group">
+                        @if($image)
+                            <p><img src="{{ $image->temporaryUrl() }}" width="100" alt=""></p>
+                        @endif
+                        <label for="recipient-name" class="col-form-label">Profile Image</label>
+                        <input type="file" class="form-control" id="recipient-name" wire:model.defer="image" required="">
+                        @error('image')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                         <label for="recipient-name" class="col-form-label">Name</label>
                         <input type="text" class="form-control" id="recipient-name" wire:model.defer="name" required="">
                         @error('name')

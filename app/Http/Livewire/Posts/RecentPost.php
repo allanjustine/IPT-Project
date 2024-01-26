@@ -8,7 +8,7 @@ use App\Events\UserLog;
 class RecentPost extends Component
 {
     public $search, $title = 'All';
-    public $content, $post_id;
+    public $content, $post_id, $postDelete;
 
     public function recentPosts (){
         $query = Post::orderBy('id', 'desc')

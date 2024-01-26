@@ -14,7 +14,8 @@ class Users extends Component
         $usersVerifiedCount = User::whereNOTNULL('email_verified_at')->count();
         $allUsers = User::count();
         $usersNotVerifiedCount = User::whereNULL('email_verified_at')->count();
-            return compact('users', 'usersVerifiedCount', 'usersNotVerifiedCount', 'allUsers', 'usersNull');
+
+        return compact('users', 'usersVerifiedCount', 'usersNotVerifiedCount', 'allUsers', 'usersNull');
     }
     public function render()
     {
